@@ -1,0 +1,15 @@
+{
+  "name": "elearning",
+  "version": "1.0.0",
+  "description": "API Elearning",
+  "main": "apps.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Almadoni",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.7.1"
+  }
+}
