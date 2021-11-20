@@ -333,6 +333,13 @@ ALTER TABLE ONLY public.materi
 
 
 --
+-- Name: idx_accounts_username; Type: INDEX; Schema: public; Owner: almadoni
+--
+
+CREATE INDEX idx_accounts_username ON public.accounts USING btree (username);
+
+
+--
 -- Name: exam exam_materi_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
 --
 
