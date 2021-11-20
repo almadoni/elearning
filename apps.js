@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 
 const login = require('./router/login');
 const users = require('./router/users');
+const materi_ui = require('./router/materi_ui');
 
 const db = require('./router/queries');
 const data_materi = require('./router/materi');
@@ -68,6 +69,7 @@ app.get('/', (req, res) => {
 
 app.use('/', login);
 app.use('/', users);
+app.use('/', materi_ui);
 
 app.get('/api/users', db.getUsers)
 app.post('/api/login', db.login)
