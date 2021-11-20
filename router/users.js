@@ -1,25 +1,29 @@
 const pool = require('./connection').pool;
 
-const login = (req, res) => {
-	console.log(req.body);
-	const {username, password} = req.body;
+const express = require('express');
 
-	pool.query('select * from accounts where username=$1 and password=$2',[username, password], (error, results) =>{
+const router = express.Router();
+
+router.get('/list_user', (req, res) =>{
+
+	pool.query('select * from accounts order by id', (error, results) =>{
           if(error){
-             console.log("Result :"+error);
-	     throw error
-	  }
-         
-	 console.log("Total :"+results.rows.length)
+             throw error
+          }
 
-         if(results.rows.length > 0){		
-	  res.status(200).json({code: "9200", result: results.rows[0]})	
-	 }else{
-	   res.status(200).json({code: "9999", result: "Error"})
-	 }
+          res.render('main',{
+		layout: 'index',
+		username: req.session.username,
+		list_user: true,
+		data: results.rows
+	  });
 
-	})
-}
+        });
+
+
+});
+
+
 
 const getUsers = (req, res) => {
 
@@ -71,10 +75,4 @@ const updateUser = (req, res) =>{
 }
 
 
-module.exports = {
-	login,
-	getUsers,
-	createUser,
-	updateUser,
-	register,
-}
+module.exports = router;

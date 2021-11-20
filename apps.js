@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const login = require('./router/login');
+const users = require('./router/users');
+
 const db = require('./router/queries');
 const data_materi = require('./router/materi');
 
@@ -65,6 +67,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/', login);
+app.use('/', users);
 
 app.get('/api/users', db.getUsers)
 app.post('/api/login', db.login)
