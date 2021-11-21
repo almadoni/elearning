@@ -5,9 +5,13 @@ const bodyParser = require('body-parser');
 const login = require('./router/login');
 const users = require('./router/users');
 const materi_ui = require('./router/materi_ui');
+const discussion_ui = require('./router/discussion_ui');
+const commentar_ui = require('./router/commentar_ui');
 
 const db = require('./router/queries');
 const data_materi = require('./router/materi');
+const discussion = require('./router/discussion');
+const commentar = require('./router/commentar');
 
 const app = express();
 const hostname = '127.0.0.1';
@@ -70,6 +74,8 @@ app.get('/', (req, res) => {
 app.use('/', login);
 app.use('/', users);
 app.use('/', materi_ui);
+app.use('/', discussion_ui);
+app.use('/', commentar_ui);
 
 app.get('/api/users', db.getUsers)
 app.post('/api/login', db.login)
@@ -79,6 +85,8 @@ app.put('/api/updateuser/:fcmid/:id', db.updateUser)
 
 //for materi
 app.get('/api/materies/:id', data_materi.getMateries)
+app.get('/api/discussions', discussion.getDiscussions);
+app.get('/api/commentars', commentar.getCommentars);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

@@ -99,9 +99,11 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <a href="/list_user" ><div class="menu">Daftar User</div></a>
-      <a href="/list_materi" ><div class="menu">Daftar Materi</div></a>
-      <a href="/list_materi_assign" ><div class="menu">Daftar Materi Assign</div></a>
+      <a href="/list_user" ><div class="menu">User</div></a>
+      <a href="/list_materi" ><div class="menu">Materi</div></a>
+      <a href="/list_materi_assign" ><div class="menu">Materi Assign</div></a>
+      <a href="/list_discussion" ><div class="menu">Diskusi</div></a>
+      <a href="/list_comment" ><div class="menu">Komentar</div></a>
       <a href="/profile" ><div class="menu">Profile</div></a>
       {{#if is_admin}}
       <a href="/setting"><div class="menu">Setting</div></a>  
@@ -114,6 +116,10 @@
            {{> list_user_view}}
         {{else if list_materi}}
            {{> list_materi_view}}		 
+        {{else if list_discussion}}
+           {{> list_discussion_view}}
+        {{else if list_comment}}
+           {{> list_comment_view}}
 	{{else if profile}}  
            {{> profile_view}}		 
 	{{else if setting}} 

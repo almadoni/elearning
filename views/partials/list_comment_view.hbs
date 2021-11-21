@@ -14,7 +14,7 @@
   
   <div class="container-fluid">
 
-   <h3> Daftar Pengguna</h3>
+   <h3> Daftar Komentar</h3>
   
   
 	<div class="row">
@@ -23,11 +23,10 @@
 	      <thead>
 	        <tr>          
 	          <th>ID</th> 
-	          <th>Name</th>
-	          <th>NO Mahasiswa</th>
-	          <th>Email</th>
-	          <th>Username</th>  
-	          <th>Password</th>          
+	          <th>Materi</th>
+	          <th>Komentar</th>
+	          <th>Komentar By</th>
+	          <th>Tanggal Pembuatan</th>  
 	          {{#if is_admin}}
 	            <th>Action</th>
 	          {{/if}}   
@@ -37,12 +36,11 @@
 	      <tbody id="bodytable">
 	         {{#each data}}          
 	        <tr>
-	          <td>{{id}}</td> 
-	          <td><a href="list_user/detail?id={{id}}"> {{fullname}} </a></td>  
-	          <td>{{mahasiswa_id}}</td>
-	          <td>{{email}}</td>
-	          <td>{{username}}</td>  
-	          <td>{{password}}</td>
+	          <td>{{id}}</td>    
+	          <td>{{discussion_id}}</td>  
+	          <td>{{commentar}}</td>  
+	          <td>{{user_id}}</td>  
+	          <td>{{create_date}}</td>
 	          {{#if is_admin}}
 	          <td>  
 	            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{id}}" 
