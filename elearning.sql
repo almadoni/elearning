@@ -65,6 +65,80 @@ ALTER SEQUENCE public.accounts_id_seq OWNED BY public.accounts.id;
 
 
 --
+-- Name: commentar; Type: TABLE; Schema: public; Owner: almadoni
+--
+
+CREATE TABLE public.commentar (
+    id integer NOT NULL,
+    discussion_id integer,
+    comment character varying(255) NOT NULL,
+    user_id integer,
+    created_date timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.commentar OWNER TO almadoni;
+
+--
+-- Name: commentar_id_seq; Type: SEQUENCE; Schema: public; Owner: almadoni
+--
+
+CREATE SEQUENCE public.commentar_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.commentar_id_seq OWNER TO almadoni;
+
+--
+-- Name: commentar_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: almadoni
+--
+
+ALTER SEQUENCE public.commentar_id_seq OWNED BY public.commentar.id;
+
+
+--
+-- Name: discussion; Type: TABLE; Schema: public; Owner: almadoni
+--
+
+CREATE TABLE public.discussion (
+    id integer NOT NULL,
+    materi character varying(255) NOT NULL,
+    posted_by integer,
+    create_date timestamp without time zone DEFAULT now(),
+    actived integer DEFAULT 0
+);
+
+
+ALTER TABLE public.discussion OWNER TO almadoni;
+
+--
+-- Name: discussion_id_seq; Type: SEQUENCE; Schema: public; Owner: almadoni
+--
+
+CREATE SEQUENCE public.discussion_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.discussion_id_seq OWNER TO almadoni;
+
+--
+-- Name: discussion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: almadoni
+--
+
+ALTER SEQUENCE public.discussion_id_seq OWNED BY public.discussion.id;
+
+
+--
 -- Name: exam; Type: TABLE; Schema: public; Owner: almadoni
 --
 
@@ -179,6 +253,20 @@ ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.acc
 
 
 --
+-- Name: commentar id; Type: DEFAULT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.commentar ALTER COLUMN id SET DEFAULT nextval('public.commentar_id_seq'::regclass);
+
+
+--
+-- Name: discussion id; Type: DEFAULT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.discussion ALTER COLUMN id SET DEFAULT nextval('public.discussion_id_seq'::regclass);
+
+
+--
 -- Name: exam id; Type: DEFAULT; Schema: public; Owner: almadoni
 --
 
@@ -214,7 +302,27 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 13	uji coba	cobaisjs	test@oke.m	uji	2021-11-18 14:31:17.91324	\N	\N	\N	0854646	\N	\N
 22	uko	12345	test@test.m	Amir	2021-11-19 14:22:12.626541	\N	\N	\N	055847	\N	\N
 23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	\N	\N	\N	31213	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-20 15:05:31.745	\N	\N	\N	Admin	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-21 00:11:20.513	\N	\N	\N	Admin	\N
+\.
+
+
+--
+-- Data for Name: commentar; Type: TABLE DATA; Schema: public; Owner: almadoni
+--
+
+COPY public.commentar (id, discussion_id, comment, user_id, created_date) FROM stdin;
+\.
+
+
+--
+-- Data for Name: discussion; Type: TABLE DATA; Schema: public; Owner: almadoni
+--
+
+COPY public.discussion (id, materi, posted_by, create_date, actived) FROM stdin;
+1	Politik dan Pemerintahan di Indonesia	1	2021-11-20 23:37:08.1333	0
+2	Kegiatan Ekonomi, Uang dan Koperasi	1	2021-11-20 23:37:08.1333	0
+3	Pasar, Kesejahtraan dan Perdagangan Internasional	1	2021-11-20 23:37:08.1333	0
+4	Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	1	2021-11-20 23:37:08.1333	0
 \.
 
 
@@ -264,6 +372,20 @@ SELECT pg_catalog.setval('public.accounts_id_seq', 29, true);
 
 
 --
+-- Name: commentar_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
+--
+
+SELECT pg_catalog.setval('public.commentar_id_seq', 1, false);
+
+
+--
+-- Name: discussion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
+--
+
+SELECT pg_catalog.setval('public.discussion_id_seq', 4, true);
+
+
+--
 -- Name: exam_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
@@ -309,6 +431,22 @@ ALTER TABLE ONLY public.accounts
 
 
 --
+-- Name: commentar commentar_pkey; Type: CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.commentar
+    ADD CONSTRAINT commentar_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: discussion discussion_pkey; Type: CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.discussion
+    ADD CONSTRAINT discussion_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: exam exam_pkey; Type: CONSTRAINT; Schema: public; Owner: almadoni
 --
 
@@ -337,6 +475,51 @@ ALTER TABLE ONLY public.materi
 --
 
 CREATE INDEX idx_accounts_username ON public.accounts USING btree (username);
+
+
+--
+-- Name: idx_comment_discussionid_comment; Type: INDEX; Schema: public; Owner: almadoni
+--
+
+CREATE INDEX idx_comment_discussionid_comment ON public.commentar USING btree (discussion_id, comment);
+
+
+--
+-- Name: idx_discussion_materi; Type: INDEX; Schema: public; Owner: almadoni
+--
+
+CREATE INDEX idx_discussion_materi ON public.discussion USING btree (materi);
+
+
+--
+-- Name: idx_materi_name; Type: INDEX; Schema: public; Owner: almadoni
+--
+
+CREATE INDEX idx_materi_name ON public.materi USING btree (name);
+
+
+--
+-- Name: commentar commentar_discussion_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.commentar
+    ADD CONSTRAINT commentar_discussion_id_fkey FOREIGN KEY (discussion_id) REFERENCES public.discussion(id);
+
+
+--
+-- Name: commentar commentar_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.commentar
+    ADD CONSTRAINT commentar_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.accounts(id);
+
+
+--
+-- Name: discussion discussion_posted_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.discussion
+    ADD CONSTRAINT discussion_posted_by_fkey FOREIGN KEY (posted_by) REFERENCES public.accounts(id);
 
 
 --
