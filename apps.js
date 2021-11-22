@@ -86,7 +86,10 @@ app.put('/api/updateuser/:fcmid/:id', db.updateUser)
 //for materi
 app.get('/api/materies/:id', data_materi.getMateries)
 app.get('/api/discussions', discussion.getDiscussions);
+app.get('/api/discussionsWithComment', discussion.getDiscussionsWithComment);
 app.get('/api/commentars', commentar.getCommentars);
+app.get('/api/comments/:discussion_id', commentar.getComments);
+app.post('/api/addComment', commentar.addComment);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
