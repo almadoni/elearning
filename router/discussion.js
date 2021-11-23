@@ -1,6 +1,5 @@
 const pool = require('./connection').pool;
 
-//var sync = require('synchronize');
 
 const getDiscussions = (req, res) => {
 
@@ -23,6 +22,37 @@ const getDiscussions = (req, res) => {
         })
 }
 
+const setDiscussion = (req, res) => {
+	console.log(req.body);
+	const {materi, user_id} = req.body;
+	
+	(async () =>{
+	    var jsonRst = {code: "9200", result: ""}
+	    var dataArray = []
+            const input = await addDiscussion(materi,user_id);
+	    console.log("input discussion"+input);
+	    
+	    const hasil = await getDiscussionList();
+
+            for(var i=0; i<hasil.rows.length; i++){
+                   diss = hasil.rows[i]
+                   
+                   const commentRst = await getCommentList(diss.id)
+
+                   dataArray.push({id: diss.id, materi: diss.materi, data: commentRst.rows})
+            }
+            jsonRst.result = dataArray
+
+            res.status(200).json(jsonRst);
+
+	})();
+	
+}
+
+async function addDiscussion(materi, userId){
+	const sql = 'INSERT INTO discussion (materi, posted_by) values ($1, $2)';
+	return pool.query(sql, [materi, userId]);
+}
 
 const getDiscussionsWithComment = (req, res) => {
 
@@ -38,35 +68,27 @@ const getDiscussionsWithComment = (req, res) => {
 		   console.log("discussion id"+ diss.id);
 	           const commentRst = await getCommentList(diss.id)
 		   
-		   dataArray.push({materi: diss.materi, data: commentRst.rows})
+		   dataArray.push({id: diss.id, materi: diss.materi, data: commentRst.rows})
 		}
 		jsonRst.result = dataArray
 
 		res.status(200).json(jsonRst);
 	})();
-
-	
-	/*var query1 = sync.await(discussio);
-
-	for(var i =0; i< query1.length; i++){
-	   console.log("id : "+ query1[i].id);
-	}*/
-
-//	res.status(200).json(dataJson);
 }
 
 async function getDiscussionList(){
-   const sql = 'select * from discussion where actived = 0';
+   const sql = 'select * from discussion where actived = 0 order by id desc';
    return pool.query(sql);
 }
 
 async function getCommentList(discussion_id){
-	const sql = 'select * from commentar where discussion_id = $1';
+	const sql = 'select a.*,b.fullname from commentar a left join accounts b on (b.id = a.user_id)  where discussion_id = $1';
 	return pool.query(sql, [discussion_id]);
 }
 
 
 module.exports = {
+	setDiscussion,
 	getDiscussions,
 	getDiscussionsWithComment,
 }

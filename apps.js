@@ -85,6 +85,8 @@ app.put('/api/updateuser/:fcmid/:id', db.updateUser)
 
 //for materi
 app.get('/api/materies/:id', data_materi.getMateries)
+
+app.post('/api/discussion', discussion.setDiscussion);
 app.get('/api/discussions', discussion.getDiscussions);
 app.get('/api/discussionsWithComment', discussion.getDiscussionsWithComment);
 app.get('/api/commentars', commentar.getCommentars);

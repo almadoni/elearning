@@ -296,13 +296,12 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 3	udin	12345	udin@test.net	Udin	2021-11-17 04:07:01.210256	\N	\N	\N	02584644	\N	\N
 4	romeo	123456	romeo@test.net	Remoe	2021-11-17 12:45:47.859644	\N	\N	\N	0546346	\N	\N
 5	amir	12345	amir@test.mn	amir oke	2021-11-17 16:44:57.39173	\N	\N	\N	958425	\N	\N
-6			text\n		2021-11-17 17:48:59.228305	\N	\N	\N	1234	\N	\N
 11	Ajo rajo	12345	aji@test.m	ajo singa	2021-11-18 13:09:55.477377	\N	\N	\N	08526669	\N	\N
 12	mesi	12345	test.m	mesi	2021-11-18 13:12:56.47992	\N	\N	\N	12345	\N	\N
 13	uji coba	cobaisjs	test@oke.m	uji	2021-11-18 14:31:17.91324	\N	\N	\N	0854646	\N	\N
 22	uko	12345	test@test.m	Amir	2021-11-19 14:22:12.626541	\N	\N	\N	055847	\N	\N
 23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	\N	\N	\N	31213	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-21 00:11:20.513	\N	\N	\N	Admin	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-23 14:08:59.511	\N	\N	\N	Admin	\N
 \.
 
 
@@ -311,6 +310,24 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 --
 
 COPY public.commentar (id, discussion_id, comment, user_id, created_date) FROM stdin;
+1	1	oke lah ya	1	2021-11-21 23:47:05.079504
+2	2	biasa aja kayaknya...	1	2021-11-21 23:47:45.372921
+3	\N	coba buat online	1	2021-11-22 16:19:18.977153
+4	\N	buat baru om	1	2021-11-22 16:23:45.008095
+5	\N	test	1	2021-11-22 16:28:26.493178
+6	\N	koment interaksi dr hp	1	2021-11-22 16:31:33.129151
+7	\N	dr hp no 4	1	2021-11-22 16:33:18.504887
+8	\N	test	1	2021-11-22 16:37:34.338976
+9	4	harusnya sdh ada ini\n\nbenar or betul???	1	2021-11-22 16:45:23.264972
+10	4	lagi	1	2021-11-22 16:46:54.172428
+11	4	coba terus	1	2021-11-22 16:49:01.52247
+12	4	ini ke 4 ya	1	2021-11-22 16:52:27.048843
+13	4	ini ke 5 ya	1	2021-11-22 16:54:15.733714
+14	3	ini satu 1	1	2021-11-22 16:54:40.60395
+15	3	ini dua ya	1	2021-11-22 16:55:18.755733
+16	4	klu 6 gmn	1	2021-11-22 16:57:36.631426
+17	1	ikut komet ya	3	2021-11-22 16:59:47.063777
+18	4	ke 7 gmn	3	2021-11-22 22:42:41.040634
 \.
 
 
@@ -323,6 +340,9 @@ COPY public.discussion (id, materi, posted_by, create_date, actived) FROM stdin;
 2	Kegiatan Ekonomi, Uang dan Koperasi	1	2021-11-20 23:37:08.1333	0
 3	Pasar, Kesejahtraan dan Perdagangan Internasional	1	2021-11-20 23:37:08.1333	0
 4	Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	1	2021-11-20 23:37:08.1333	0
+5	test buat topik baru	3	2021-11-22 23:42:07.371095	0
+25	klau gini gmn om...	3	2021-11-23 14:03:45.92334	0
+26	ini harus di atas	3	2021-11-23 14:04:46.630704	0
 \.
 
 
@@ -375,14 +395,14 @@ SELECT pg_catalog.setval('public.accounts_id_seq', 29, true);
 -- Name: commentar_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.commentar_id_seq', 1, false);
+SELECT pg_catalog.setval('public.commentar_id_seq', 18, true);
 
 
 --
 -- Name: discussion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.discussion_id_seq', 4, true);
+SELECT pg_catalog.setval('public.discussion_id_seq', 26, true);
 
 
 --
