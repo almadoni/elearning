@@ -65,6 +65,45 @@ ALTER SEQUENCE public.accounts_id_seq OWNED BY public.accounts.id;
 
 
 --
+-- Name: answer; Type: TABLE; Schema: public; Owner: almadoni
+--
+
+CREATE TABLE public.answer (
+    id integer NOT NULL,
+    option1 character varying(255) NOT NULL,
+    option2 character varying(255) NOT NULL,
+    option3 character varying(255) NOT NULL,
+    option4 character varying(255) NOT NULL,
+    option_answer integer NOT NULL,
+    question_id integer
+);
+
+
+ALTER TABLE public.answer OWNER TO almadoni;
+
+--
+-- Name: answer_id_seq; Type: SEQUENCE; Schema: public; Owner: almadoni
+--
+
+CREATE SEQUENCE public.answer_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.answer_id_seq OWNER TO almadoni;
+
+--
+-- Name: answer_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: almadoni
+--
+
+ALTER SEQUENCE public.answer_id_seq OWNED BY public.answer.id;
+
+
+--
 -- Name: commentar; Type: TABLE; Schema: public; Owner: almadoni
 --
 
@@ -246,10 +285,131 @@ ALTER SEQUENCE public.materi_id_seq OWNED BY public.materi.id;
 
 
 --
+-- Name: poin_exam; Type: TABLE; Schema: public; Owner: almadoni
+--
+
+CREATE TABLE public.poin_exam (
+    id integer NOT NULL,
+    exam_id integer,
+    user_id integer,
+    transaction_number character varying(100),
+    score integer NOT NULL,
+    create_date timestamp without time zone DEFAULT now(),
+    status integer
+);
+
+
+ALTER TABLE public.poin_exam OWNER TO almadoni;
+
+--
+-- Name: poin_exam_detail; Type: TABLE; Schema: public; Owner: almadoni
+--
+
+CREATE TABLE public.poin_exam_detail (
+    id integer NOT NULL,
+    poin_exam_id integer,
+    answer integer,
+    istrue boolean,
+    created_date timestamp without time zone DEFAULT now(),
+    answer_id integer
+);
+
+
+ALTER TABLE public.poin_exam_detail OWNER TO almadoni;
+
+--
+-- Name: poin_exam_detail_id_seq; Type: SEQUENCE; Schema: public; Owner: almadoni
+--
+
+CREATE SEQUENCE public.poin_exam_detail_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.poin_exam_detail_id_seq OWNER TO almadoni;
+
+--
+-- Name: poin_exam_detail_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: almadoni
+--
+
+ALTER SEQUENCE public.poin_exam_detail_id_seq OWNED BY public.poin_exam_detail.id;
+
+
+--
+-- Name: poin_exam_id_seq; Type: SEQUENCE; Schema: public; Owner: almadoni
+--
+
+CREATE SEQUENCE public.poin_exam_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.poin_exam_id_seq OWNER TO almadoni;
+
+--
+-- Name: poin_exam_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: almadoni
+--
+
+ALTER SEQUENCE public.poin_exam_id_seq OWNED BY public.poin_exam.id;
+
+
+--
+-- Name: question; Type: TABLE; Schema: public; Owner: almadoni
+--
+
+CREATE TABLE public.question (
+    id integer NOT NULL,
+    exam_id integer,
+    name character varying(255) NOT NULL,
+    create_by integer NOT NULL,
+    create_date timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.question OWNER TO almadoni;
+
+--
+-- Name: question_id_seq; Type: SEQUENCE; Schema: public; Owner: almadoni
+--
+
+CREATE SEQUENCE public.question_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.question_id_seq OWNER TO almadoni;
+
+--
+-- Name: question_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: almadoni
+--
+
+ALTER SEQUENCE public.question_id_seq OWNED BY public.question.id;
+
+
+--
 -- Name: accounts id; Type: DEFAULT; Schema: public; Owner: almadoni
 --
 
 ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.accounts_id_seq'::regclass);
+
+
+--
+-- Name: answer id; Type: DEFAULT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.answer ALTER COLUMN id SET DEFAULT nextval('public.answer_id_seq'::regclass);
 
 
 --
@@ -288,6 +448,27 @@ ALTER TABLE ONLY public.materi_assign ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: poin_exam id; Type: DEFAULT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.poin_exam ALTER COLUMN id SET DEFAULT nextval('public.poin_exam_id_seq'::regclass);
+
+
+--
+-- Name: poin_exam_detail id; Type: DEFAULT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.poin_exam_detail ALTER COLUMN id SET DEFAULT nextval('public.poin_exam_detail_id_seq'::regclass);
+
+
+--
+-- Name: question id; Type: DEFAULT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.question ALTER COLUMN id SET DEFAULT nextval('public.question_id_seq'::regclass);
+
+
+--
 -- Data for Name: accounts; Type: TABLE DATA; Schema: public; Owner: almadoni
 --
 
@@ -300,8 +481,19 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 12	mesi	12345	test.m	mesi	2021-11-18 13:12:56.47992	\N	\N	\N	12345	\N	\N
 13	uji coba	cobaisjs	test@oke.m	uji	2021-11-18 14:31:17.91324	\N	\N	\N	0854646	\N	\N
 22	uko	12345	test@test.m	Amir	2021-11-19 14:22:12.626541	\N	\N	\N	055847	\N	\N
-23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	\N	\N	\N	31213	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-23 14:08:59.511	\N	\N	\N	Admin	\N
+30	text\n	text	text\n	text\n	2021-11-23 15:02:11.265382	\N	\N	\N	1234	\N	\N
+23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	\N	31213	\N	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-25 14:03:56.472	\N	\N	\N	Admin	\N
+\.
+
+
+--
+-- Data for Name: answer; Type: TABLE DATA; Schema: public; Owner: almadoni
+--
+
+COPY public.answer (id, option1, option2, option3, option4, option_answer, question_id) FROM stdin;
+1	Komik	Pancasila	Majalah	Koran	2	2
+2	Yogyakarta	Medan	DKI Jakarta	Surabaya	3	3
 \.
 
 
@@ -312,12 +504,6 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 COPY public.commentar (id, discussion_id, comment, user_id, created_date) FROM stdin;
 1	1	oke lah ya	1	2021-11-21 23:47:05.079504
 2	2	biasa aja kayaknya...	1	2021-11-21 23:47:45.372921
-3	\N	coba buat online	1	2021-11-22 16:19:18.977153
-4	\N	buat baru om	1	2021-11-22 16:23:45.008095
-5	\N	test	1	2021-11-22 16:28:26.493178
-6	\N	koment interaksi dr hp	1	2021-11-22 16:31:33.129151
-7	\N	dr hp no 4	1	2021-11-22 16:33:18.504887
-8	\N	test	1	2021-11-22 16:37:34.338976
 9	4	harusnya sdh ada ini\n\nbenar or betul???	1	2021-11-22 16:45:23.264972
 10	4	lagi	1	2021-11-22 16:46:54.172428
 11	4	coba terus	1	2021-11-22 16:49:01.52247
@@ -328,6 +514,10 @@ COPY public.commentar (id, discussion_id, comment, user_id, created_date) FROM s
 16	4	klu 6 gmn	1	2021-11-22 16:57:36.631426
 17	1	ikut komet ya	3	2021-11-22 16:59:47.063777
 18	4	ke 7 gmn	3	2021-11-22 22:42:41.040634
+19	27	jdjdidisjsueisnsidjejdi	23	2021-11-23 21:30:56.079144
+20	27	menurut saya\n	23	2021-11-23 21:31:09.317158
+21	4	tes	23	2021-11-23 21:31:29.081415
+22	27	ikutan koment ciek	3	2021-11-23 22:12:46.512966
 \.
 
 
@@ -343,6 +533,7 @@ COPY public.discussion (id, materi, posted_by, create_date, actived) FROM stdin;
 5	test buat topik baru	3	2021-11-22 23:42:07.371095	0
 25	klau gini gmn om...	3	2021-11-23 14:03:45.92334	0
 26	ini harus di atas	3	2021-11-23 14:04:46.630704	0
+27	baru lho	23	2021-11-23 21:30:32.37044	0
 \.
 
 
@@ -385,24 +576,69 @@ COPY public.materi_assign (id, materi_id, account_id, create_date) FROM stdin;
 
 
 --
+-- Data for Name: poin_exam; Type: TABLE DATA; Schema: public; Owner: almadoni
+--
+
+COPY public.poin_exam (id, exam_id, user_id, transaction_number, score, create_date, status) FROM stdin;
+1	2	2	abc1234	0	2021-11-23 23:13:25.070235	0
+7	2	3	\N	0	2021-11-25 00:03:18.44623	0
+8	2	4	\N	0	2021-11-25 06:43:02.74211	0
+9	2	5	\N	0	2021-11-25 06:47:03.622254	0
+11	2	11	\N	200	2021-11-25 06:52:09.587159	1
+\.
+
+
+--
+-- Data for Name: poin_exam_detail; Type: TABLE DATA; Schema: public; Owner: almadoni
+--
+
+COPY public.poin_exam_detail (id, poin_exam_id, answer, istrue, created_date, answer_id) FROM stdin;
+3	1	3	t	2021-11-23 23:26:08.554172	2
+1	1	2	t	2021-11-23 23:15:59.531272	1
+6	7	3	t	2021-11-25 04:32:02.096325	2
+7	7	3	f	2021-11-25 06:41:24.656614	1
+8	9	2	\N	2021-11-25 06:47:03.626031	1
+9	11	2	t	2021-11-25 06:52:09.592097	1
+10	11	1	f	2021-11-25 13:17:28.643774	2
+\.
+
+
+--
+-- Data for Name: question; Type: TABLE DATA; Schema: public; Owner: almadoni
+--
+
+COPY public.question (id, exam_id, name, create_by, create_date) FROM stdin;
+2	2	Apa dasar negara Indonesia	1	2021-11-23 23:01:35.122801
+3	2	Apa nama ibu kota Indonesia	1	2021-11-23 23:02:44.724166
+\.
+
+
+--
 -- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.accounts_id_seq', 29, true);
+SELECT pg_catalog.setval('public.accounts_id_seq', 31, true);
+
+
+--
+-- Name: answer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
+--
+
+SELECT pg_catalog.setval('public.answer_id_seq', 2, true);
 
 
 --
 -- Name: commentar_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.commentar_id_seq', 18, true);
+SELECT pg_catalog.setval('public.commentar_id_seq', 22, true);
 
 
 --
 -- Name: discussion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.discussion_id_seq', 26, true);
+SELECT pg_catalog.setval('public.discussion_id_seq', 27, true);
 
 
 --
@@ -427,6 +663,27 @@ SELECT pg_catalog.setval('public.materi_id_seq', 4, true);
 
 
 --
+-- Name: poin_exam_detail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
+--
+
+SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 10, true);
+
+
+--
+-- Name: poin_exam_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
+--
+
+SELECT pg_catalog.setval('public.poin_exam_id_seq', 11, true);
+
+
+--
+-- Name: question_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
+--
+
+SELECT pg_catalog.setval('public.question_id_seq', 3, true);
+
+
+--
 -- Name: accounts accounts_email_key; Type: CONSTRAINT; Schema: public; Owner: almadoni
 --
 
@@ -448,6 +705,14 @@ ALTER TABLE ONLY public.accounts
 
 ALTER TABLE ONLY public.accounts
     ADD CONSTRAINT accounts_username_key UNIQUE (username);
+
+
+--
+-- Name: answer answer_pkey; Type: CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.answer
+    ADD CONSTRAINT answer_pkey PRIMARY KEY (id);
 
 
 --
@@ -491,6 +756,30 @@ ALTER TABLE ONLY public.materi
 
 
 --
+-- Name: poin_exam_detail poin_exam_detail_pkey; Type: CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.poin_exam_detail
+    ADD CONSTRAINT poin_exam_detail_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: poin_exam poin_exam_pkey; Type: CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.poin_exam
+    ADD CONSTRAINT poin_exam_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: question question_pkey; Type: CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.question
+    ADD CONSTRAINT question_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: idx_accounts_username; Type: INDEX; Schema: public; Owner: almadoni
 --
 
@@ -516,6 +805,14 @@ CREATE INDEX idx_discussion_materi ON public.discussion USING btree (materi);
 --
 
 CREATE INDEX idx_materi_name ON public.materi USING btree (name);
+
+
+--
+-- Name: answer answer_question_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.answer
+    ADD CONSTRAINT answer_question_id_fkey FOREIGN KEY (question_id) REFERENCES public.question(id);
 
 
 --
@@ -564,6 +861,54 @@ ALTER TABLE ONLY public.materi_assign
 
 ALTER TABLE ONLY public.materi_assign
     ADD CONSTRAINT materi_assign_materi_id_fkey FOREIGN KEY (materi_id) REFERENCES public.materi(id);
+
+
+--
+-- Name: poin_exam_detail poin_exam_detail_answer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.poin_exam_detail
+    ADD CONSTRAINT poin_exam_detail_answer_id_fkey FOREIGN KEY (answer_id) REFERENCES public.answer(id);
+
+
+--
+-- Name: poin_exam_detail poin_exam_detail_poin_exam_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.poin_exam_detail
+    ADD CONSTRAINT poin_exam_detail_poin_exam_id_fkey FOREIGN KEY (poin_exam_id) REFERENCES public.poin_exam(id);
+
+
+--
+-- Name: poin_exam poin_exam_exam_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.poin_exam
+    ADD CONSTRAINT poin_exam_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES public.exam(id);
+
+
+--
+-- Name: poin_exam poin_exam_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.poin_exam
+    ADD CONSTRAINT poin_exam_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.accounts(id);
+
+
+--
+-- Name: question question_create_by_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.question
+    ADD CONSTRAINT question_create_by_fkey FOREIGN KEY (create_by) REFERENCES public.accounts(id);
+
+
+--
+-- Name: question question_exam_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.question
+    ADD CONSTRAINT question_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES public.exam(id);
 
 
 --

@@ -98,6 +98,7 @@ app.post('/api/addComment', commentar.addComment);
 app.post('/api/poinExam', exam.savePoinExam);
 app.get('/api/exams', exam.getExams);
 app.get('/api/exam/:materiId', exam.getExam);
+app.get('/api/score/:userId/:examId', exam.getScore);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
