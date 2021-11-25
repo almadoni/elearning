@@ -68,6 +68,10 @@
   position: relative;
 }
 	</style>
+
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="/assets/css/jquery-ui.css"> 
+  <link rel="stylesheet" href="/assets/css/loadingModal.css"> 
 </head>
 <body>
 
@@ -100,10 +104,10 @@
   <div class="row content">
     <div class="col-sm-2 sidenav">
       <a href="/list_user" ><div class="menu">User</div></a>
-      <a href="/list_materi" ><div class="menu">Materi</div></a>
-      <a href="/list_materi_assign" ><div class="menu">Materi Assign</div></a>
+      <a href="/list_materi" ><div class="menu">Materi</div></a>     
       <a href="/list_discussion" ><div class="menu">Diskusi</div></a>
       <a href="/list_comment" ><div class="menu">Komentar</div></a>
+      <a href="/list_exam"><div class="menu">Kuis</div></a>
       <a href="/profile" ><div class="menu">Profile</div></a>
       {{#if is_admin}}
       <a href="/setting"><div class="menu">Setting</div></a>  
@@ -115,9 +119,15 @@
   	{{#if list_user}} 
            {{> list_user_view}}
         {{else if list_materi}}
-           {{> list_materi_view}}		 
+           {{> list_materi_view}}
+        {{else if list_materi_assign}}
+           {{> list_materi_assign_view}}
+        {{else if list_exam}}
+           {{> list_exam_view}}		 
         {{else if list_discussion}}
            {{> list_discussion_view}}
+        {{else if list_discussion_comment}}
+           {{> list_discussion_comment_view}}
         {{else if list_comment}}
            {{> list_comment_view}}
 	{{else if profile}}  

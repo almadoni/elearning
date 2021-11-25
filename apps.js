@@ -7,11 +7,12 @@ const users = require('./router/users');
 const materi_ui = require('./router/materi_ui');
 const discussion_ui = require('./router/discussion_ui');
 const commentar_ui = require('./router/commentar_ui');
-
+const exam_ui = require('./router/exam_ui');
 const db = require('./router/queries');
 const data_materi = require('./router/materi');
 const discussion = require('./router/discussion');
 const commentar = require('./router/commentar');
+const exam = require('./router/exam');
 
 const app = express();
 const hostname = '127.0.0.1';
@@ -76,6 +77,7 @@ app.use('/', users);
 app.use('/', materi_ui);
 app.use('/', discussion_ui);
 app.use('/', commentar_ui);
+app.use('/', exam_ui);
 
 app.get('/api/users', db.getUsers)
 app.post('/api/login', db.login)
@@ -92,6 +94,10 @@ app.get('/api/discussionsWithComment', discussion.getDiscussionsWithComment);
 app.get('/api/commentars', commentar.getCommentars);
 app.get('/api/comments/:discussion_id', commentar.getComments);
 app.post('/api/addComment', commentar.addComment);
+
+app.post('/api/poinExam', exam.savePoinExam);
+app.get('/api/exams', exam.getExams);
+app.get('/api/exam/:materiId', exam.getExam);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

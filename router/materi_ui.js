@@ -23,6 +23,25 @@ router.get('/list_materi', (req, res) =>{
 
 });
 
+router.get('/list_materi_assign/:materiId', (req, res) =>{
+        materiId = req.params.materiId;
+	console.log("materi id "+materiId);
+        pool.query('select a.*, b.fullname, b.email, b.username from materi_assign a left join accounts b on (a.account_id = b.id) where a.materi_id = $1',[materiId], (error, results) =>{
+          if(error){
+             throw error
+          }
+
+          res.render('main',{
+                layout: 'index',
+                username: req.session.username,
+                list_materi_assign: true,
+                data: results.rows
+          });
+
+        });
+
+});
+
 
 
 const getUsers = (req, res) => {
