@@ -23,4 +23,25 @@ router.get('/list_exam', (req, res) =>{
 
 });
 
+router.get('/list_exam_detail/:examId', (req, res) =>{
+	examId = req.params.examId
+        pool.query('select * from question where exam_id = $1',[examId], (error, results) =>{
+          if(error){
+             throw error
+          }
+
+          res.render('main',{
+                layout: 'index',
+                username: req.session.username,
+                list_exam_detail: true,
+		is_admin: true,
+                data: results.rows
+          });
+
+        });
+
+
+});
+
+
 module.exports = router

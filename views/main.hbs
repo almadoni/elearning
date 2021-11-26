@@ -69,9 +69,11 @@
 }
 	</style>
 
+<!--
 <link rel="stylesheet" href="/assets/css/bootstrap.min.css"> 
   <link rel="stylesheet" href="/assets/css/jquery-ui.css"> 
   <link rel="stylesheet" href="/assets/css/loadingModal.css"> 
+-->
 </head>
 <body>
 
@@ -124,7 +126,9 @@
            {{> list_materi_assign_view}}
         {{else if list_exam}}
            {{> list_exam_view}}		 
-        {{else if list_discussion}}
+        {{else if list_exam_detail}}
+           {{> list_exam_detail_view}}
+	{{else if list_discussion}}
            {{> list_discussion_view}}
         {{else if list_discussion_comment}}
            {{> list_discussion_comment_view}}
