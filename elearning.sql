@@ -75,7 +75,8 @@ CREATE TABLE public.answer (
     option3 character varying(255) NOT NULL,
     option4 character varying(255) NOT NULL,
     option_answer integer NOT NULL,
-    question_id integer
+    question_id integer,
+    option5 character varying(255)
 );
 
 
@@ -477,13 +478,13 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 3	udin	12345	udin@test.net	Udin	2021-11-17 04:07:01.210256	\N	\N	\N	02584644	\N	\N
 4	romeo	123456	romeo@test.net	Remoe	2021-11-17 12:45:47.859644	\N	\N	\N	0546346	\N	\N
 5	amir	12345	amir@test.mn	amir oke	2021-11-17 16:44:57.39173	\N	\N	\N	958425	\N	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-26 08:23:00.818	\N	\N	\N	Admin	\N
 11	Ajo rajo	12345	aji@test.m	ajo singa	2021-11-18 13:09:55.477377	\N	\N	\N	08526669	\N	\N
 12	mesi	12345	test.m	mesi	2021-11-18 13:12:56.47992	\N	\N	\N	12345	\N	\N
 13	uji coba	cobaisjs	test@oke.m	uji	2021-11-18 14:31:17.91324	\N	\N	\N	0854646	\N	\N
 22	uko	12345	test@test.m	Amir	2021-11-19 14:22:12.626541	\N	\N	\N	055847	\N	\N
 30	text\n	text	text\n	text\n	2021-11-23 15:02:11.265382	\N	\N	\N	1234	\N	\N
 23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	\N	31213	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-25 14:03:56.472	\N	\N	\N	Admin	\N
 \.
 
 
@@ -491,9 +492,9 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 -- Data for Name: answer; Type: TABLE DATA; Schema: public; Owner: almadoni
 --
 
-COPY public.answer (id, option1, option2, option3, option4, option_answer, question_id) FROM stdin;
-1	Komik	Pancasila	Majalah	Koran	2	2
-2	Yogyakarta	Medan	DKI Jakarta	Surabaya	3	3
+COPY public.answer (id, option1, option2, option3, option4, option_answer, question_id, option5) FROM stdin;
+1	Komik	Pancasila	Majalah	Koran	2	2	\N
+2	Yogyakarta	Medan	DKI Jakarta	Surabaya	3	3	\N
 \.
 
 
@@ -580,11 +581,17 @@ COPY public.materi_assign (id, materi_id, account_id, create_date) FROM stdin;
 --
 
 COPY public.poin_exam (id, exam_id, user_id, transaction_number, score, create_date, status) FROM stdin;
-1	2	2	abc1234	0	2021-11-23 23:13:25.070235	0
-7	2	3	\N	0	2021-11-25 00:03:18.44623	0
-8	2	4	\N	0	2021-11-25 06:43:02.74211	0
-9	2	5	\N	0	2021-11-25 06:47:03.622254	0
-11	2	11	\N	200	2021-11-25 06:52:09.587159	1
+40	2	3	kwgi8d3d	0	2021-11-26 14:53:18.794113	1
+33	2	3	kwgfqiy2	0	2021-11-26 13:43:27.33845	1
+34	2	3	kwgfrtc9	0	2021-11-26 13:44:27.46582	1
+35	2	3	kwgg2a7x	0	2021-11-26 13:52:35.901486	1
+36	2	3	kwgh4ia2	0	2021-11-26 14:22:19.275118	1
+37	2	3	kwgh7xjc	0	2021-11-26 14:24:59.016545	1
+38	2	3	kwghklv1	0	2021-11-26 14:34:50.414028	1
+39	2	3	kwgi3xmp	0	2021-11-26 14:49:52.130006	1
+41	2	3	kwgi910v	0	2021-11-26 14:53:49.808032	1
+42	2	3	kwgib33l	0	2021-11-26 14:55:25.80945	1
+43	2	3	kwgikv14	0	2021-11-26 15:03:01.912218	1
 \.
 
 
@@ -593,13 +600,28 @@ COPY public.poin_exam (id, exam_id, user_id, transaction_number, score, create_d
 --
 
 COPY public.poin_exam_detail (id, poin_exam_id, answer, istrue, created_date, answer_id) FROM stdin;
-3	1	3	t	2021-11-23 23:26:08.554172	2
-1	1	2	t	2021-11-23 23:15:59.531272	1
-6	7	3	t	2021-11-25 04:32:02.096325	2
-7	7	3	f	2021-11-25 06:41:24.656614	1
-8	9	2	\N	2021-11-25 06:47:03.626031	1
-9	11	2	t	2021-11-25 06:52:09.592097	1
-10	11	1	f	2021-11-25 13:17:28.643774	2
+34	33	2	t	2021-11-26 13:43:27.342517	1
+35	33	3	t	2021-11-26 13:43:43.855871	2
+36	34	1	f	2021-11-26 13:44:27.469111	1
+37	34	3	t	2021-11-26 13:44:31.827849	2
+38	35	2	t	2021-11-26 13:52:35.905746	1
+39	35	3	t	2021-11-26 13:52:43.887605	2
+40	36	2	t	2021-11-26 14:22:19.277907	1
+41	36	2	f	2021-11-26 14:22:21.381052	2
+42	37	2	t	2021-11-26 14:24:59.020006	1
+43	37	1	f	2021-11-26 14:25:02.204479	2
+44	38	2	t	2021-11-26 14:34:50.418458	1
+45	38	2	f	2021-11-26 14:34:54.75517	2
+46	39	2	t	2021-11-26 14:49:52.133461	1
+47	39	3	t	2021-11-26 14:49:57.563078	2
+48	40	2	t	2021-11-26 14:53:18.797472	1
+49	40	3	t	2021-11-26 14:53:20.977826	2
+50	41	2	t	2021-11-26 14:53:49.810804	1
+51	41	3	t	2021-11-26 14:53:54.504777	2
+52	42	2	t	2021-11-26 14:55:25.812749	1
+53	42	3	t	2021-11-26 14:55:28.140873	2
+54	43	5	f	2021-11-26 15:03:01.915398	1
+55	43	5	f	2021-11-26 15:03:03.584178	2
 \.
 
 
@@ -666,14 +688,14 @@ SELECT pg_catalog.setval('public.materi_id_seq', 4, true);
 -- Name: poin_exam_detail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 10, true);
+SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 55, true);
 
 
 --
 -- Name: poin_exam_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_id_seq', 11, true);
+SELECT pg_catalog.setval('public.poin_exam_id_seq', 43, true);
 
 
 --

@@ -48,7 +48,8 @@ async function exams(){
 }
 
 async function exam(materiId){
-	const sql = 'select * from exam a left join materi b on (a.materi_id = b.id) where b.id = $1';
+	//const sql = 'select * from exam a left join materi b on (a.materi_id = b.id) where b.id = $1';
+	const sql = 'select b.* from materi a left join exam b on (a.id = b.materi_id) where a.id = $1';
 	return pool.query(sql,[materiId]);
 }
 
