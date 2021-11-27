@@ -111,8 +111,11 @@ const getScore = (req, res) =>{
 
 		jsonRst = {code: "9200", result:""}
 
-		const totalQuestion = await getTotalQuestion(examId);
-		const totalAnswerExam = await getTotalAnswerExam(examId, userId);
+		const ex = await exam(examId);
+		var currExamId = ex.rows[0].id;
+
+		const totalQuestion = await getTotalQuestion(currExamId);
+		const totalAnswerExam = await getTotalAnswerExam(currExamId, userId);
 	        
 		console.log(totalQuestion.rows);
 		console.log(totalAnswerExam.rows);
@@ -122,8 +125,14 @@ const getScore = (req, res) =>{
 
 		var currTotalQst = totalQuestion.rows[0].total;
 		var currTotalAExam = totalAnswerExam.rows[0].total;
-		var score = (currTotalAExam/currTotalQst)*100;
+		var score = 0;
                 console.log("update poin exam score : "+score);
+		if(currTotalQst == 0 && currTotalAExam == 0){
+			score = 0;
+		}else{
+			score = (currTotalAExam/currTotalQst)*100;
+			score = Math.round(score);
+		}
 		const updateScore = await updatePoinExamScore(userId, examId, score);
 		jsonRst.result = {score: score}
 
@@ -167,7 +176,11 @@ const savePoinExam = (req, res) =>{
 
 		jsonRst = {code: "9200", result: ""};
 
-		const p = await getPoin(userId, examId);
+		const ex = await exam(examId);
+		var currExamId = ex.rows[0].id;
+		console.log("curr examId : "+ currExamId);
+
+		const p = await getPoin(userId, currExamId);
 		//check apakah trx poin nya ada yg lagi jalan
 		console.log("start poin with check get poin");
 		console.log(p.rows);
@@ -178,7 +191,7 @@ const savePoinExam = (req, res) =>{
 		if(isiPoin == 0){
 		    //todo insert poin exam and poin exam detail
 		    console.log("1. start save poin...");
-		    const insertPoin = await setPoinExam(userId, examId);
+		    const insertPoin = await setPoinExam(userId, currExamId);
 			
 		    const answer = await getAnswer(answerId); //harus check query
                         var isAnswerTrue = false;

@@ -14,6 +14,8 @@ const discussion = require('./router/discussion');
 const commentar = require('./router/commentar');
 const exam = require('./router/exam');
 
+const init_data = require('./router/init_master_data');
+
 const app = express();
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -71,6 +73,7 @@ app.get('/', (req, res) => {
   }
 });
 
+//app.use('/', init_data);
 
 app.use('/', login);
 app.use('/', users);

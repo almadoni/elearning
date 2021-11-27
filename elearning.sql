@@ -369,7 +369,7 @@ ALTER SEQUENCE public.poin_exam_id_seq OWNED BY public.poin_exam.id;
 CREATE TABLE public.question (
     id integer NOT NULL,
     exam_id integer,
-    name character varying(255) NOT NULL,
+    name text NOT NULL,
     create_by integer NOT NULL,
     create_date timestamp without time zone DEFAULT now()
 );
@@ -478,7 +478,7 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 3	udin	12345	udin@test.net	Udin	2021-11-17 04:07:01.210256	\N	\N	\N	02584644	\N	\N
 4	romeo	123456	romeo@test.net	Remoe	2021-11-17 12:45:47.859644	\N	\N	\N	0546346	\N	\N
 5	amir	12345	amir@test.mn	amir oke	2021-11-17 16:44:57.39173	\N	\N	\N	958425	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-26 08:23:00.818	\N	\N	\N	Admin	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-26 16:24:24.714	\N	\N	\N	Admin	\N
 11	Ajo rajo	12345	aji@test.m	ajo singa	2021-11-18 13:09:55.477377	\N	\N	\N	08526669	\N	\N
 12	mesi	12345	test.m	mesi	2021-11-18 13:12:56.47992	\N	\N	\N	12345	\N	\N
 13	uji coba	cobaisjs	test@oke.m	uji	2021-11-18 14:31:17.91324	\N	\N	\N	0854646	\N	\N
@@ -493,8 +493,50 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 --
 
 COPY public.answer (id, option1, option2, option3, option4, option_answer, question_id, option5) FROM stdin;
-1	Komik	Pancasila	Majalah	Koran	2	2	\N
-2	Yogyakarta	Medan	DKI Jakarta	Surabaya	3	3	\N
+9	Politikos	Politik	Polis	Policy	2	17	Poli
+10	 Hornby	Surbakti	Andrey Heywood	Budiardjo	3	18	Kartono
+11	Faktor sifat kepribadian 	Faktor sosio-kognitif	Faktor-faktor psikodemografis	Faktor ekstraversi	3	19	Faktor media 
+12	perwakilan presiden oleh wakil presiden jika presiden berhalangan	 lamanya presiden dan wakil presiden memegang jabatannya	hak presiden	sumpah janji presiden dan wakil presiden	2	20	presiden memegang kekuasaan
+13	Hukum tertulis dan hukum tidak tertulis	Good governance dan clean government	Hukum transparancy dan hukum responsiveness	Hukum privat dan hukum publik	4	21	Hukum doktrin  dan Hukum adat
+14	transparansi, penegakan hukum, partisipasi dan responsif	konsensus, kesetaraan, korup dan efektivitas 	efisiensi, akuntabilitas, ekslusif  dan visi strategis	responsif, provokatif, konsensus dan kesetaraan, 	1	22	efektivitas, efisiensi, akuntabilitas dan elitis
+15	Parlementer	Presedensial	Liberal	Terpimpin	2	23	Mutlak 
+16	Konfrensi Meja Bundar	Perjanjian Linggarjati	Disahkannya UUDS 1950	Supersemar	5	24	Dekrit Presiden 5 Juli 1959
+17	Janur Kuning	Konstituante	G 30 S PKI	Maklumat X	3	25	APRA
+18	 Partai Persatuan Pembangunan (PPP), Partai Demokrasi Indonesia (PDI), dan Golongan Karya (Golkar).	 Partai NU (PNU), Partai Demokrasi Indonesia (PDI), dan Golongan Karya (Golkar).	Partai Persatuan Pembangunan (PPP), Partai Nasional Indonesia (PNI), dan Golongan Karya (Golkar).	Partai Persatuan Pembangunan (PPP), Partai Demokrat Indonesia (PDI), dan Golongan Karya (Golkar).	1	26	Partai Karya Pembangunan (PPP), Partai Demokrasi Indonesia (PDI), dan Golongan Karya (Golkar).
+19	15 partai politik	20 partai politik	24 partai politik	38 partai politik	2	27	48 partai politik
+20	Ekologi	Ekonomi	Argonomi	Produksi	2	28	Koperasi 
+21	Barang apa yang akan diproduksi, bagaimana barang tersebut diproduksi, untuk siapa barang tersebut diproduksi	Kebutuhan manusia adalah titik pangkal kegiatan perekonomian serta menjadi tujuan akhir kegiatan perekonomian	Manusia adalah makhluk yang tidak pernah merasa puas atas apa yang telah diperolehnya	Sebuah aksioma dalam ilmu ekonomi mengatakan bahwa manusia yang rasional selalu bertindak untuk memaksimalkan kepuasannya	1	29	Manusia yang rasional senantiasa berusaha memenuhi kepentingan pribadinya
+22	Pemenuhan kebutuhan merupakan pendorong paling besar bagi manusia untuk melakukan kegiatan ekonomi 	Manusia yang rasional selalu bertindak untuk memaksimalkan kepuasannya 	Tindakan manusia yang dilakukan untuk memenuhi kebutuhan hidupnya	Kebutuhan manusia adalah titik pangkal kegiatan perekonomian	5	30	Dengan pengorbanan tertentu dapat memperoleh hasil/kepuasan yang setinggi-tingginya 
+23	Rumah untuk tempat bernaung. 	Makanan dan minuman yang cukup.	Kendaraan yang cepat	Perawatan kesehatan dasar	3	31	Pakaian yang layak
+24	Bertindak emosional, ekonomis dan menyusun skala prioritas	Bertindak rasional, ekonomis dan menyusun skala keinginan	Bertindak rasional, ekologis dan menyusun skala prioritas	Bertindak rasional, ekonomis dan menyusun skala prioritas	4	32	Bertindak sosial, ekonomis dan menyusun skala prioritas
+25	Konsumsi	Distribusi	Produksi	Ekonomi	3	33	Prioritas
+26	form utility, place utility, time utility dan ownership utility	quality utility, place utility, time utility dan ownership utility	form utility, place utility, package utility dan ownership utility	form utility, place utility, time utility dan input utility	1	34	form utility, place utility, input utility dan ownership utility
+27	Modal	Sumberdaya	Kewirausahaan 	 Alam	3	35	Konsumsi
+28	Utama	Priotitas	Pokok	Tambahan	4	36	Cadangan
+29	Kebutuhan bertahan hidup dengan layak	Gaya hidup dan status sosial	Sumber kenyaman dan kemudahan	Kebutuhan dasar	2	37	Kebutuhan utama 
+30	Perizinan, Adat Istiadat, Prakiraan harga dan Iklan	Penghasilan, Adat Istiadat, Prakiraan harga dan Iklan	Penghasilan, jumlah keluarga, Prakiraan harga dan Iklan	Kegunaan, Adat Istiadat, Prakiraan harga dan Iklan	2	38	Penghasilan, Adat Istiadat, Kenyamanan dan Iklan
+31	Peraturan Presiden Republik Indonesia No.112 Tahun 2007	Peraturan Presiden Republik Indonesia No.112 Tahun 2008	Peraturan Presiden Republik Indonesia No.113 Tahun 2007	Peraturan Mentri Perdagangan Republik Indonesia No.112 Tahun 2007	1	39	Peraturan Mentri Perdagangan Republik Indonesia No.112 Tahun 2008
+32	Pasar barang nyata dan pasar barang abstrak	Pasar persaingan sempurna dan pasar persaingan tidak sempurna	Pasar tradisional dan pasar modern	Pasar harian, pasar mingguan dan pasar bulanan	3	40	Pasar regional, pasar lingkungan dan pasar wilayah
+33	Berdasarkan manajemennya	Berdasarkan strukturnya (jumlah penjual dan pembeli)	Berdasarkan waktu terjadinya pasar	Berdasarkan lokasi	2	41	Berdasarkan kemampuan pelayanannya
+34	Menggunakan Data distribusi dan data pasar 	Menggunakan data pendapatan dan data konsumsi	Menggunakan data jaminan sosial dan rehabilitasi sosial	Menggunakan data kebahagian dan kepuasan	2	42	Menggunakan data produksi dan data konsumsi
+35	Tingkat pembangunan manusia yang tinggi. 	Tingkat pembangunan manusia melalui lembaga pendidikan. 	Tingkat kesejahteraan 	Tingkat upah yang diterima	1	43	Tingkat perkembangan manusia
+36	Terbentuknya persahabatan antar-negara	Meningkatkan kemakmuran	Menciptakan spesialisasi	Terbentuknya ketergantungan antar negara	4	44	Kestabilan harga
+37	Jual-beli atau tukar-menukar barang dan jasa. 	Kerja sama di bidang ekonomi	Pertukaran politik negara	Pertukaran serta perluasan penggunaan teknologi.	3	45	Pergerakan sumber daya
+38	Rate	Kurs	Exchange	Spot	2	46	Daily averages
+39	6.98 USD	69.8 USD	143275.5 USD	1432755 USD	1	47	1432755000 USD 
+40	Hotspot	Kreasi intelektual	Ekonomi kreatif	Daily averages	3	48	Ekonomi inovasi
+41	Membuka lapangan pekerjaan baru bagi masyarakat Indonesia	Menguatkan nilai konsumsi masyarakat	Mengurangi pertumbuhan angka pengangguran	 Menciptakan masyarakat Indonesia yang kreatif dan inovatif	2	49	Kompetisi aktivitas dunia bisnis yang lebih sehat
+42	Ilmu	Pengetahuan	Teknologi	Technicoas	1	50	IPTEK  
+43	Pengetahuan yang terorganisir	Ilmu pengetahuan terapan	 Ilmu pengetahuan secara abstrak	Pembuatan penemuan baru, 	2	51	Terminologi
+44	Pengertian ilmu pengetahuan dan teknologi	Dampak utama ilmu pengetahuan dan teknologi	Fungsi utama ilmu pengetahuan dan teknologi	Makna ilmu pengetahuan dan teknologi	3	52	Tantangan ilmu pengetahuan dan teknologi
+45	Teknologi, manusia dan cara penggunaannya 	Alat, lingkungan, dan budaya	Manusia, alat, dan budaya	Manusia, lingkungan, dan budaya	4	53	Manusia, karakter, dan budaya
+46	Memecahkan masalah	Membuat penemuan baru	 Menjawab pertanyaan	Menambah pengetahuan	1	54	Menciptakan taraf hidup
+47	Manusia semakin kritis dalam berpikir dan semakin disiplin dalam bekerja	Semakin disiplin dalam bekerja dan semakin efisien dalam bertindak	Manusia semakin kritis dalam berpikir dan semakin efisien dalam bertindak	Merasa dibuai dengan semua fasilitas dan semakin efisien dalam bertindak	4	55	Semakin kritis dalam berpikir
+48	Munculnya media masa elektronik yang dapat menjadi sumber ilmu dan informasi pendidikan.	Munculnya berbagai macam metode pembelajaran yang baru, sehingga memudahkan pelajar memahami materi-materi pelajaran. 	Meningkatkan produktivitas dalam dunia industri	Mempermudah sistem pembelajaran.	3	56	Mempermudah dalam mengolah data nilai dengan menggunakan IPTEK
+49	Pendidikan	Ekonomi	Sosial budaya	Industri	3	57	Politik 
+50	 Arus informasi yang berkembang cepat	Manusia sebagai pelaku yang menggeluti bidang penelitian dan Pengembangan serta rancang bangun dan perekayasaan.	Kearifan lokal yang dapat memberikan proteksi  masyarakat  	Modal yang dikeluarkan untuk pengembangan produk iptek	2	58	Lingkungan tempat pemanfaatan produk Iptek
+51	Rendahnya kemampuan IPTEKS nasional dalam menghadapi perkembangan global	Rendahnya kontribusi IPTEKS nasional di sektor produksi  	 Lemahnya sinergi kebijakan IPTEKS	Kemerosotan moral di kalangan warga masyarakat.	4	59	Belum berkembangnya budaya IPTEKS di kalangan masyarakat
+52	Kearifan lokal yang terdapat di masyarakat	Keinginan untuk belajar pada semua lapisan masyarakat	Mitigasi bencana yang sedang digalakkan 	 Penalaran objektif dan rasional	1	60	Pemahaman teknologi telah menjadi pengarah hidup manusia
 \.
 
 
@@ -581,17 +623,8 @@ COPY public.materi_assign (id, materi_id, account_id, create_date) FROM stdin;
 --
 
 COPY public.poin_exam (id, exam_id, user_id, transaction_number, score, create_date, status) FROM stdin;
-40	2	3	kwgi8d3d	0	2021-11-26 14:53:18.794113	1
-33	2	3	kwgfqiy2	0	2021-11-26 13:43:27.33845	1
-34	2	3	kwgfrtc9	0	2021-11-26 13:44:27.46582	1
-35	2	3	kwgg2a7x	0	2021-11-26 13:52:35.901486	1
-36	2	3	kwgh4ia2	0	2021-11-26 14:22:19.275118	1
-37	2	3	kwgh7xjc	0	2021-11-26 14:24:59.016545	1
-38	2	3	kwghklv1	0	2021-11-26 14:34:50.414028	1
-39	2	3	kwgi3xmp	0	2021-11-26 14:49:52.130006	1
-41	2	3	kwgi910v	0	2021-11-26 14:53:49.808032	1
-42	2	3	kwgib33l	0	2021-11-26 14:55:25.80945	1
-43	2	3	kwgikv14	0	2021-11-26 15:03:01.912218	1
+56	2	3	kwh20j1i	0	2021-11-27 00:07:05.574448	0
+57	3	23	kwh24v03	0	2021-11-27 00:10:27.699338	0
 \.
 
 
@@ -600,28 +633,28 @@ COPY public.poin_exam (id, exam_id, user_id, transaction_number, score, create_d
 --
 
 COPY public.poin_exam_detail (id, poin_exam_id, answer, istrue, created_date, answer_id) FROM stdin;
-34	33	2	t	2021-11-26 13:43:27.342517	1
-35	33	3	t	2021-11-26 13:43:43.855871	2
-36	34	1	f	2021-11-26 13:44:27.469111	1
-37	34	3	t	2021-11-26 13:44:31.827849	2
-38	35	2	t	2021-11-26 13:52:35.905746	1
-39	35	3	t	2021-11-26 13:52:43.887605	2
-40	36	2	t	2021-11-26 14:22:19.277907	1
-41	36	2	f	2021-11-26 14:22:21.381052	2
-42	37	2	t	2021-11-26 14:24:59.020006	1
-43	37	1	f	2021-11-26 14:25:02.204479	2
-44	38	2	t	2021-11-26 14:34:50.418458	1
-45	38	2	f	2021-11-26 14:34:54.75517	2
-46	39	2	t	2021-11-26 14:49:52.133461	1
-47	39	3	t	2021-11-26 14:49:57.563078	2
-48	40	2	t	2021-11-26 14:53:18.797472	1
-49	40	3	t	2021-11-26 14:53:20.977826	2
-50	41	2	t	2021-11-26 14:53:49.810804	1
-51	41	3	t	2021-11-26 14:53:54.504777	2
-52	42	2	t	2021-11-26 14:55:25.812749	1
-53	42	3	t	2021-11-26 14:55:28.140873	2
-54	43	5	f	2021-11-26 15:03:01.915398	1
-55	43	5	f	2021-11-26 15:03:03.584178	2
+148	56	2	t	2021-11-27 00:07:05.577777	9
+149	56	3	t	2021-11-27 00:07:07.023406	10
+150	56	3	t	2021-11-27 00:07:08.922364	11
+151	56	2	t	2021-11-27 00:07:12.852927	12
+152	56	4	t	2021-11-27 00:07:13.840729	13
+153	56	2	f	2021-11-27 00:07:14.817782	14
+154	56	3	f	2021-11-27 00:07:15.802131	15
+155	56	4	f	2021-11-27 00:07:16.986374	16
+156	56	1	f	2021-11-27 00:07:20.377394	17
+157	56	3	f	2021-11-27 00:07:22.616153	18
+158	56	4	f	2021-11-27 00:07:24.472777	19
+159	57	2	t	2021-11-27 00:10:27.701753	20
+160	57	3	f	2021-11-27 00:10:29.389844	21
+161	57	2	f	2021-11-27 00:10:32.760845	22
+162	57	3	t	2021-11-27 00:10:34.317384	23
+163	57	2	f	2021-11-27 00:10:36.089162	24
+164	57	4	f	2021-11-27 00:10:38.183458	25
+165	57	2	f	2021-11-27 00:10:40.093512	26
+166	57	3	t	2021-11-27 00:10:41.945403	27
+167	57	2	f	2021-11-27 00:10:43.493376	28
+168	57	3	f	2021-11-27 00:10:46.838347	29
+169	57	4	f	2021-11-27 00:10:49.180324	30
 \.
 
 
@@ -630,8 +663,50 @@ COPY public.poin_exam_detail (id, poin_exam_id, answer, istrue, created_date, an
 --
 
 COPY public.question (id, exam_id, name, create_by, create_date) FROM stdin;
-2	2	Apa dasar negara Indonesia	1	2021-11-23 23:01:35.122801
-3	2	Apa nama ibu kota Indonesia	1	2021-11-23 23:02:44.724166
+17	2	Proses pembentukan dan pembagian kekuasaan dalam masyarakat yang antara lain berwujud proses pembuatan keputusan, khususnya dalam negara merupakan istilah menurut Kamus Besar Bahasa Indonesia untuk kata	1	2021-11-26 23:15:12.163633
+18	2	Siapakah tokoh yang mengemukakan pandangan, bahwa politik itu adalah kegiatan suatu bangsa yang bertujuan untuk membuat, mempertahankan, dan mengamandemen peraturan-peraturan umum yang mengatur kehidupannya, yang berarti tidak dapat terlepas dari gejala konflik dan kerja sama....	1	2021-11-26 23:15:12.173471
+19	2	Situasi pertetanggaan adalah salah satu faktor psikologis yang mempengaruhi Perilaku berpartisipasi dalam kegiatan politik, Situasi pertetanggaan adalah dikelompokkan pada faktor ….	1	2021-11-26 23:15:12.175753
+20	2	Pasal 7 UUD 1945 mengatur tentang ….	1	2021-11-26 23:15:12.177854
+21	2	Menurut isinya, hukum dibagi menjadi ….	1	2021-11-26 23:15:12.179782
+22	2	Diantara prinsip-prinsip dasar pemerintahan yang baik adalah…	1	2021-11-26 23:15:12.181718
+23	2	Bentuk pemerintahan Negara Indonesia setelah di proklamirkannya kemerdekaan adalah….	1	2021-11-26 23:15:12.18357
+24	2	Penanda awal berlakunya demokrasi terpimpin di Indonesia adalah….	1	2021-11-26 23:15:12.185182
+25	2	Pemberontakan yang dilakukan oleh Partai Komunis Indoesia di tahun 1965 dikenal dengan istilah ….	1	2021-11-26 23:15:12.188052
+26	2	Pada tahun 1973, Presiden Soeharto memerintahkan untuk pelaksanaan penyederhanaan partai dan golongan, partai-partai dan golongan dimaksud adalah ….	1	2021-11-26 23:15:12.189762
+27	2	Jumlah partai nasional kontestan pemilu 2019 adalah sebanyak….	1	2021-11-26 23:15:12.191512
+28	3	 Ilmu yang mempelajari bagaimana manusia membuat pilihan- pilihan untuk menggunakan sumber daya yang terbatas dalam rangka memenuhi kebutuhan dan keinginan yang tidak terbatas merupakan definisi dari ….	1	2021-11-26 23:15:12.193067
+29	3	Rumusan masalah ekonomi modern lebih spesifik yang dikemukakan oleh Sutatmi adalah :	1	2021-11-26 23:15:12.194631
+30	3	Tindakan ekonomis yang dilakukan manusia didasari oleh apa yang disebut dengan prinsip ekonomi, yaitu ….	1	2021-11-26 23:15:12.196202
+31	3	Pada dasarnya hanya ada empat hal yang dapat dikategorikan sebagai kebutuhan untuk dapat bertahan hidup, kecuali ….	1	2021-11-26 23:15:12.197813
+32	3	Ciri manusia yang melakukan tindakan dengan dilandasi oleh prinsip ekonomi, adalah….	1	2021-11-26 23:15:12.199318
+33	3	Memenuhi kebutuhan manusia dalam mencapai kemakmuran adalah tujuan dari …	1	2021-11-26 23:15:12.200884
+34	3	Nilai guna barang yang dihasilkan atau bertambah akibat kegiatan produksi dapat dikategorikan sebagai berikut…	1	2021-11-26 23:15:12.20252
+35	3	Efektifitas atau tingkat keberhasilan sebuah kegiatan produksi, baik kegiatan produksi barang maupun jasa, sangat tergantung dari kualitas dari faktor produksi, yaitu …	1	2021-11-26 23:15:12.20396
+36	3	Memberi Informasi adalah salah satu fungsi distribusi dari kelompok …	1	2021-11-26 23:15:12.205557
+37	3	Kebutuhan tersier adalah barang-barang yang disamping berfungsi untuk membantu kehidupan manusia namun juga berfungsi sebagai … 	1	2021-11-26 23:15:12.20701
+38	3	Beberapa faktor yang menentukan besar kecilnya pengeluaran konsumsi yang dilakukan konsumen, diantaranya ….	1	2021-11-26 23:15:12.208517
+39	4	Regulasi tentang Penataan dan Pembinaan Pasar Tradisional, Pusat Perbelanjaan dan Toko Modern adalah terdapat pada  ….	1	2021-11-26 23:15:12.210094
+40	4	Menurut manajemennya, pasar dapat dibedakan menjadi...	1	2021-11-26 23:15:12.211587
+41	4	Pasar persaingan sempurna dan Pasar persaingan tidak sempurna adalah pengelompokan pasar berdasarkan ….	1	2021-11-26 23:15:12.213244
+42	4	2 cara yang dapat digunakan untuk mengukur kesejahteraan materi atau Indikator Kesejahteraan adalah ….	1	2021-11-26 23:15:12.214714
+43	4	Brata mengemukakan bahwa kemampuan penduduk dalam mengelola sumber-sumber pertumbuhan ekonomi ditentukan oleh ….	1	2021-11-26 23:15:12.216221
+44	4	Dampak negatif dari perdagangan internasional adalah…	1	2021-11-26 23:15:12.217776
+45	4	Beberapa hal yang tidak terjadi ketika negara terlibat dalam perdagangan internasional adalah ….	1	2021-11-26 23:15:12.219264
+46	4	Nilai mata uang yang dimiliki sebuah negara yang dinyatakan dengan nilai mata uang negara yang lain disebut dengan 	1	2021-11-26 23:15:12.220813
+47	4	Nilai tukar dolar US saat ini terhadap rupiah adalah 1 USD = 14.440 IDR. Jika kita punya uang Rp 100.000.000. Setelah ditukar, mendapatkan uang $ sebesar….	1	2021-11-26 23:15:12.22242
+48	4	Suatu konsep perekonomian di era ekonomi baru yang mengintensifkan informasi dan kreativitas, dengan mengedepankan ide dan berbagai pengetahuan dari sumber daya manusia itu sendiri disebut dengan ….	1	2021-11-26 23:15:12.225116
+49	4	 Manfaat yang dapat diperoleh dengan berkembangannya bidang ekonomi kreatif ini, kecuali …	1	2021-11-26 23:15:12.227015
+50	5	Melalui pikiran dan pikirannya agar menghasilkan pengetahuan yang bermakna sebagai seperangkat pengetahuan yang tersusun dalam suatu sistem aturan tertentu. Pengetahuan yang terorganisir ini disebut ….	1	2021-11-26 23:15:12.229874
+51	5	Teknologi adalah istilah lain untuk	1	2021-11-26 23:15:12.231674
+52	5	 Membantu manusia mempermudah kegiatan hidup, lancar, efisien, dan efektif, serta menjadikan hidupnya lebih bermakna dan efektif, hal ini adalah…	1	2021-11-26 23:15:12.233411
+53	5	Dalam antropologi, terminologi atau pengertian ilmu pengetahuan dan teknologi sering digunakan untuk menyebut hubungan antara ….	1	2021-11-26 23:15:12.235028
+54	5	Dalam penggunaan perangkat teknologi oleh manusia, ilmu pengetahuan digunakan untuk …	1	2021-11-26 23:15:12.236653
+55	5	Suatu keadaan yang tidak seharusnya terjadi ketika semakin tinggi penguasaan atau semakin berkembangnya IPTEKS, akan terwujud…	1	2021-11-26 23:15:12.238359
+56	5	Diantara manfaat perkembangan iptek di Indonesia pada bidang ekonomi adalah…	1	2021-11-26 23:15:12.239957
+57	5	Kemajuan teknologi komunikasi yang cepat dapat mempermudah komunikasi antar manusia dari suatu tempat ke tempat yang lain adalah salah satu manfaat perkembangan IPTek di bidang	1	2021-11-26 23:15:12.241592
+58	5	Faktor yang paling menentukan dalam hal penguasaan IPTEKS adalah….	1	2021-11-26 23:15:12.243154
+59	5	Berikut adalah tantangan pengembangan iptek di indonesia, kecuali…	1	2021-11-26 23:15:12.244767
+60	5	Proteksi  masyarakat  untuk  tetap  bertahan  di  tengah  perubahan  sosial yang  terjadi karena perkembangan iptek dewasa ini di Indonesia bisa diperoleh dari…	1	2021-11-26 23:15:12.246575
 \.
 
 
@@ -646,7 +721,7 @@ SELECT pg_catalog.setval('public.accounts_id_seq', 31, true);
 -- Name: answer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.answer_id_seq', 2, true);
+SELECT pg_catalog.setval('public.answer_id_seq', 52, true);
 
 
 --
@@ -688,21 +763,21 @@ SELECT pg_catalog.setval('public.materi_id_seq', 4, true);
 -- Name: poin_exam_detail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 55, true);
+SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 169, true);
 
 
 --
 -- Name: poin_exam_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_id_seq', 43, true);
+SELECT pg_catalog.setval('public.poin_exam_id_seq', 57, true);
 
 
 --
 -- Name: question_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.question_id_seq', 3, true);
+SELECT pg_catalog.setval('public.question_id_seq', 60, true);
 
 
 --
