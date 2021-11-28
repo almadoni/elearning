@@ -33,7 +33,7 @@ CREATE TABLE public.accounts (
     created_on timestamp without time zone DEFAULT now(),
     last_login timestamp without time zone,
     session_id character varying(100),
-    firebase_id character varying(150),
+    firebase_id character varying(255),
     mahasiswa_id character varying(100),
     status character varying(100),
     active boolean
@@ -221,7 +221,8 @@ ALTER SEQUENCE public.exam_id_seq OWNED BY public.exam.id;
 CREATE TABLE public.materi (
     id integer NOT NULL,
     name character varying(100) NOT NULL,
-    create_date timestamp without time zone DEFAULT now()
+    create_date timestamp without time zone DEFAULT now(),
+    path character varying(255)
 );
 
 
@@ -400,6 +401,43 @@ ALTER SEQUENCE public.question_id_seq OWNED BY public.question.id;
 
 
 --
+-- Name: usage_history; Type: TABLE; Schema: public; Owner: almadoni
+--
+
+CREATE TABLE public.usage_history (
+    id integer NOT NULL,
+    user_id integer,
+    type character varying(100) NOT NULL,
+    description character varying(150),
+    create_date timestamp without time zone DEFAULT now()
+);
+
+
+ALTER TABLE public.usage_history OWNER TO almadoni;
+
+--
+-- Name: usage_history_id_seq; Type: SEQUENCE; Schema: public; Owner: almadoni
+--
+
+CREATE SEQUENCE public.usage_history_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.usage_history_id_seq OWNER TO almadoni;
+
+--
+-- Name: usage_history_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: almadoni
+--
+
+ALTER SEQUENCE public.usage_history_id_seq OWNED BY public.usage_history.id;
+
+
+--
 -- Name: accounts id; Type: DEFAULT; Schema: public; Owner: almadoni
 --
 
@@ -470,21 +508,28 @@ ALTER TABLE ONLY public.question ALTER COLUMN id SET DEFAULT nextval('public.que
 
 
 --
+-- Name: usage_history id; Type: DEFAULT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.usage_history ALTER COLUMN id SET DEFAULT nextval('public.usage_history_id_seq'::regclass);
+
+
+--
 -- Data for Name: accounts; Type: TABLE DATA; Schema: public; Owner: almadoni
 --
 
 COPY public.accounts (id, username, password, email, fullname, created_on, last_login, session_id, firebase_id, mahasiswa_id, status, active) FROM stdin;
 2	nola	nola	nola@test.net	Nola	2021-11-16 08:34:29.43776	\N	\N	2323	009	\N	\N
-3	udin	12345	udin@test.net	Udin	2021-11-17 04:07:01.210256	\N	\N	\N	02584644	\N	\N
 4	romeo	123456	romeo@test.net	Remoe	2021-11-17 12:45:47.859644	\N	\N	\N	0546346	\N	\N
 5	amir	12345	amir@test.mn	amir oke	2021-11-17 16:44:57.39173	\N	\N	\N	958425	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-26 16:24:24.714	\N	\N	\N	Admin	\N
 11	Ajo rajo	12345	aji@test.m	ajo singa	2021-11-18 13:09:55.477377	\N	\N	\N	08526669	\N	\N
 12	mesi	12345	test.m	mesi	2021-11-18 13:12:56.47992	\N	\N	\N	12345	\N	\N
 13	uji coba	cobaisjs	test@oke.m	uji	2021-11-18 14:31:17.91324	\N	\N	\N	0854646	\N	\N
+3	udin	12345	udin@test.net	Udin	2021-11-17 04:07:01.210256	\N	\N	eZZucGfqRnOq42AqyKp4ej:APA91bF8OM024r5K2sII842K8epIRQUvFpKoZ-PUpYtFUp70_h3HcU6wSOaiOAWJGFjcGBqdfnP4paBPBTShpONgOniD4by59nMezJGiEX6sO57Aq3KieRoMkMFppLtUzcm_Dwfgaw7k	02584644	\N	\N
+23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	eZZucGfqRnOq42AqyKp4ej:APA91bF8OM024r5K2sII842K8epIRQUvFpKoZ-PUpYtFUp70_h3HcU6wSOaiOAWJGFjcGBqdfnP4paBPBTShpONgOniD4by59nMezJGiEX6sO57Aq3KieRoMkMFppLtUzcm_Dwfgaw7k	31213	\N	\N
 22	uko	12345	test@test.m	Amir	2021-11-19 14:22:12.626541	\N	\N	\N	055847	\N	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-27 13:32:46.476	\N	eZZucGfqRnOq42AqyKp4ej:APA91bF8OM024r5K2sII842K8epIRQUvFpKoZ-PUpYtFUp70_h3HcU6wSOaiOAWJGFjcGBqdfnP4paBPBTShpONgOniD4by59nMezJGiEX6sO57Aq3KieRoMkMFppLtUzcm_Dwfgaw7k	\N	Admin	\N
 30	text\n	text	text\n	text\n	2021-11-23 15:02:11.265382	\N	\N	\N	1234	\N	\N
-23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	\N	31213	\N	\N
 \.
 
 
@@ -596,11 +641,11 @@ COPY public.exam (id, name, materi_id, create_date) FROM stdin;
 -- Data for Name: materi; Type: TABLE DATA; Schema: public; Owner: almadoni
 --
 
-COPY public.materi (id, name, create_date) FROM stdin;
-1	Politik dan Pemerintahan di Indonesia	2021-11-17 06:03:20.637438
-2	Kegiatan Ekonomi, Uang dan Koperasi	2021-11-17 06:03:37.733136
-3	Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-17 06:04:05.482091
-4	Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-17 06:04:29.537983
+COPY public.materi (id, name, create_date, path) FROM stdin;
+1	Politik dan Pemerintahan di Indonesia	2021-11-17 06:03:20.637438	https://www.youtube.com/watch?v=9qWauD4cumE
+2	Kegiatan Ekonomi, Uang dan Koperasi	2021-11-17 06:03:37.733136	https://www.youtube.com/watch?v=RRW2Cy2IR3U
+3	Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-17 06:04:05.482091	https://www.youtube.com/watch?v=CwZHQusxdSw
+4	Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-17 06:04:29.537983	https://www.youtube.com/watch?v=e38gK6qCMxA
 \.
 
 
@@ -615,6 +660,10 @@ COPY public.materi_assign (id, materi_id, account_id, create_date) FROM stdin;
 4	2	23	2021-11-19 14:44:22.324381
 5	3	23	2021-11-19 14:44:26.003464
 6	4	23	2021-11-19 14:44:30.515992
+7	1	1	2021-11-28 01:07:24.512209
+8	2	1	2021-11-28 01:07:28.650662
+9	3	1	2021-11-28 01:07:31.92488
+10	4	1	2021-11-28 01:07:36.000536
 \.
 
 
@@ -623,8 +672,12 @@ COPY public.materi_assign (id, materi_id, account_id, create_date) FROM stdin;
 --
 
 COPY public.poin_exam (id, exam_id, user_id, transaction_number, score, create_date, status) FROM stdin;
-56	2	3	kwh20j1i	0	2021-11-27 00:07:05.574448	0
 57	3	23	kwh24v03	0	2021-11-27 00:10:27.699338	0
+59	2	23	kwh3bjls	0	2021-11-27 00:43:39.136543	0
+60	5	23	kwhsmvdr	0	2021-11-27 12:32:18.015267	0
+58	4	23	kwh3b87k	27	2021-11-27 00:43:24.368738	1
+61	3	3	kwhto7uf	0	2021-11-27 13:01:20.439419	0
+56	2	3	kwh20j1i	100	2021-11-27 00:07:05.574448	1
 \.
 
 
@@ -655,6 +708,46 @@ COPY public.poin_exam_detail (id, poin_exam_id, answer, istrue, created_date, an
 167	57	2	f	2021-11-27 00:10:43.493376	28
 168	57	3	f	2021-11-27 00:10:46.838347	29
 169	57	4	f	2021-11-27 00:10:49.180324	30
+170	58	1	t	2021-11-27 00:43:24.375125	31
+171	58	2	f	2021-11-27 00:43:28.917029	32
+172	59	2	t	2021-11-27 00:43:39.138248	9
+173	59	1	f	2021-11-27 00:43:43.62886	10
+174	59	2	f	2021-11-27 00:43:45.277424	11
+175	59	1	f	2021-11-27 00:43:47.921373	12
+176	59	1	f	2021-11-27 00:43:49.788817	13
+177	59	2	f	2021-11-27 00:43:51.986634	14
+178	59	1	f	2021-11-27 00:43:53.329998	15
+179	59	3	f	2021-11-27 00:43:55.200243	16
+180	59	1	f	2021-11-27 00:43:57.672481	17
+181	59	2	f	2021-11-27 00:44:00.017238	18
+182	59	2	t	2021-11-27 00:44:02.732656	19
+183	60	1	t	2021-11-27 12:32:18.020198	42
+184	60	2	t	2021-11-27 12:32:20.21727	43
+185	60	3	t	2021-11-27 12:32:21.480886	44
+186	60	1	f	2021-11-27 12:32:22.754906	45
+187	60	2	f	2021-11-27 12:32:24.020703	46
+188	60	1	f	2021-11-27 12:32:25.86795	47
+189	60	4	f	2021-11-27 12:32:28.377962	48
+190	60	5	f	2021-11-27 12:32:30.391532	49
+191	60	1	f	2021-11-27 12:32:31.993714	50
+192	60	2	f	2021-11-27 12:32:34.063222	51
+193	60	4	f	2021-11-27 12:32:35.871634	52
+194	56	1	f	2021-11-27 12:52:02.589786	9
+195	56	2	f	2021-11-27 12:52:09.502642	10
+196	56	1	f	2021-11-27 12:52:11.517239	11
+197	61	2	t	2021-11-27 13:01:20.44269	20
+198	61	1	t	2021-11-27 13:01:22.551084	21
+199	61	5	t	2021-11-27 13:01:28.161856	22
+200	61	3	t	2021-11-27 13:01:32.58492	23
+201	61	4	t	2021-11-27 13:01:35.779548	24
+202	61	3	t	2021-11-27 13:01:38.593357	25
+203	61	1	t	2021-11-27 13:01:44.016689	26
+204	61	3	t	2021-11-27 13:01:49.600777	27
+205	61	4	t	2021-11-27 13:01:55.773489	28
+206	61	2	t	2021-11-27 13:02:03.190892	29
+207	61	2	t	2021-11-27 13:02:07.323088	30
+208	57	1	f	2021-11-28 00:47:52.699726	20
+209	57	3	f	2021-11-28 00:47:59.053822	21
 \.
 
 
@@ -711,10 +804,61 @@ COPY public.question (id, exam_id, name, create_by, create_date) FROM stdin;
 
 
 --
+-- Data for Name: usage_history; Type: TABLE DATA; Schema: public; Owner: almadoni
+--
+
+COPY public.usage_history (id, user_id, type, description, create_date) FROM stdin;
+1	3	OPEN_KOMPENTENSI	Ketika membuka kompentensi	2021-11-27 22:42:54.339191
+2	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-27 22:43:01.75454
+3	3	PLAY_VIDEO	Ketika memulai memutar video	2021-11-27 22:43:10.78859
+4	3	OPEN_EXAM	Ketika membuka menu ujian	2021-11-27 22:43:17.136664
+5	3	PLAY_VIDEO	Ketika memulai memutar video	2021-11-27 23:38:15.777113
+6	3	PLAY_VIDEO	Ketika memulai memutar video	2021-11-27 23:41:44.731197
+7	3	PLAY_VIDEO	Ketika memulai memutar video	2021-11-27 23:42:34.146309
+8	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-27 23:56:15.891256
+9	3	PLAY_VIDEO	Ketika memulai memutar video	2021-11-27 23:56:21.443849
+10	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-27 23:56:32.314937
+11	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-27 23:56:51.501122
+12	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-27 23:57:01.888878
+13	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 00:11:51.235641
+14	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:11:53.993529
+15	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 00:12:07.021373
+16	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:12:08.258478
+17	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 00:22:09.437351
+18	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:22:10.75106
+19	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 00:22:24.329941
+20	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:22:25.431734
+21	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 00:26:15.539819
+22	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:26:17.7428
+23	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 00:27:41.441089
+24	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:27:42.74031
+25	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 00:29:27.758842
+26	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:29:28.205527
+27	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 00:32:38.775999
+28	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:32:40.680567
+29	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:34:27.768723
+30	3	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 00:37:14.558693
+31	3	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:37:15.763401
+32	3	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 00:37:48.969684
+33	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 00:40:31.775549
+34	23	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 00:40:32.201367
+35	23	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 00:40:54.833524
+36	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 00:47:28.063849
+37	23	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 00:47:29.898477
+38	23	OPEN_EXAM	Ketika membuka menu ujian, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 00:47:48.562443
+39	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 01:07:46.492883
+40	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 01:07:48.225214
+41	1	OPEN_KOMPENTENSI	Ketika membuka kompentensi	2021-11-28 01:10:24.065383
+42	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 01:13:05.413391
+43	1	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 01:16:56.069757
+\.
+
+
+--
 -- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.accounts_id_seq', 31, true);
+SELECT pg_catalog.setval('public.accounts_id_seq', 32, true);
 
 
 --
@@ -749,28 +893,28 @@ SELECT pg_catalog.setval('public.exam_id_seq', 5, true);
 -- Name: materi_assign_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.materi_assign_id_seq', 6, true);
+SELECT pg_catalog.setval('public.materi_assign_id_seq', 10, true);
 
 
 --
 -- Name: materi_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.materi_id_seq', 4, true);
+SELECT pg_catalog.setval('public.materi_id_seq', 5, true);
 
 
 --
 -- Name: poin_exam_detail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 169, true);
+SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 209, true);
 
 
 --
 -- Name: poin_exam_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_id_seq', 57, true);
+SELECT pg_catalog.setval('public.poin_exam_id_seq', 61, true);
 
 
 --
@@ -778,6 +922,13 @@ SELECT pg_catalog.setval('public.poin_exam_id_seq', 57, true);
 --
 
 SELECT pg_catalog.setval('public.question_id_seq', 60, true);
+
+
+--
+-- Name: usage_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
+--
+
+SELECT pg_catalog.setval('public.usage_history_id_seq', 43, true);
 
 
 --
@@ -874,6 +1025,14 @@ ALTER TABLE ONLY public.poin_exam
 
 ALTER TABLE ONLY public.question
     ADD CONSTRAINT question_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: usage_history usage_history_pkey; Type: CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.usage_history
+    ADD CONSTRAINT usage_history_pkey PRIMARY KEY (id);
 
 
 --
@@ -1006,6 +1165,14 @@ ALTER TABLE ONLY public.question
 
 ALTER TABLE ONLY public.question
     ADD CONSTRAINT question_exam_id_fkey FOREIGN KEY (exam_id) REFERENCES public.exam(id);
+
+
+--
+-- Name: usage_history usage_history_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: almadoni
+--
+
+ALTER TABLE ONLY public.usage_history
+    ADD CONSTRAINT usage_history_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.accounts(id);
 
 
 --
