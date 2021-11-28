@@ -110,6 +110,8 @@
       <a href="/list_discussion" ><div class="menu">Diskusi</div></a>
       <a href="/list_comment" ><div class="menu">Komentar</div></a>
       <a href="/list_exam"><div class="menu">Kuis</div></a>
+      <a href="/list_report"><div class="menu">Laporan Kuis</div></a>
+      <a href="/list_usage"><div class="menu">Aktifitas</div></a>
       <a href="/profile" ><div class="menu">Profile</div></a>
       {{#if is_admin}}
       <a href="/setting"><div class="menu">Setting</div></a>  
@@ -125,7 +127,11 @@
         {{else if list_materi_assign}}
            {{> list_materi_assign_view}}
         {{else if list_exam}}
-           {{> list_exam_view}}		 
+           {{> list_exam_view}}
+	{{else if list_report}}
+           {{> list_report_view}}
+        {{else if list_usage}}
+           {{> list_usage_view}}		 
         {{else if list_exam_detail}}
            {{> list_exam_detail_view}}
 	{{else if list_discussion}}

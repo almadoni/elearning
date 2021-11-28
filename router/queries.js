@@ -1,24 +1,43 @@
 const pool = require('./connection').pool;
 
 const login = (req, res) => {
+
+	(async ()=>{
+
 	console.log(req.body);
-	const {username, password} = req.body;
+	const {username, password, token} = req.body;
 
-	pool.query('select * from accounts where username=$1 and password=$2',[username, password], (error, results) =>{
-          if(error){
-             console.log("Result :"+error);
-	     throw error
-	  }
+		
+	//pool.query('select * from accounts where username=$1 and password=$2',[username, password], (error, results) =>{
+        //  if(error){
+        //     console.log("Result :"+error);
+	//     throw error
+	//  }
          
-	 console.log("Total :"+results.rows.length)
+	const tologin = await doLogin(username, password);	
+	 console.log("Total :"+tologin.rows.length)
 
-         if(results.rows.length > 0){		
-	  res.status(200).json({code: "9200", result: results.rows[0]})	
+         if(tologin.rows.length > 0){
+          var up = await updateFCM(token, tologin.rows[0].id);
+
+	  res.status(200).json({code: "9200", result: tologin.rows[0]})	
 	 }else{
 	   res.status(200).json({code: "9999", result: "Error"})
 	 }
 
-	})
+	//})
+
+	})();	
+}
+
+async function doLogin(username, password){
+	const sql = 'select * from accounts where username=$1 and password=$2';
+	return pool.query(sql, [username, password]);
+}
+
+async function updateFCM(fcmId, userId){
+	const sql = 'update accounts set firebase_id = $1 where id = $2';
+	return pool.query(sql, [fcmId, userId]);
 }
 
 const getUsers = (req, res) => {

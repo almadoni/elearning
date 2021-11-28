@@ -13,8 +13,11 @@ const data_materi = require('./router/materi');
 const discussion = require('./router/discussion');
 const commentar = require('./router/commentar');
 const exam = require('./router/exam');
-
+const report = require('./router/report_ui');
 const init_data = require('./router/init_master_data');
+
+const usage = require('./router/usage_history');
+const usage_ui = require('./router/usage_ui');
 
 const app = express();
 const hostname = '127.0.0.1';
@@ -74,13 +77,16 @@ app.get('/', (req, res) => {
 });
 
 //app.use('/', init_data);
-
+app.use('/', usage_ui);
+app.use('/', report);
 app.use('/', login);
 app.use('/', users);
 app.use('/', materi_ui);
 app.use('/', discussion_ui);
 app.use('/', commentar_ui);
 app.use('/', exam_ui);
+
+app.post('/api/usageHistory', usage.saveUsage);
 
 app.get('/api/users', db.getUsers)
 app.post('/api/login', db.login)
