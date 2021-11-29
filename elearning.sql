@@ -526,9 +526,9 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 12	mesi	12345	test.m	mesi	2021-11-18 13:12:56.47992	\N	\N	\N	12345	\N	\N
 13	uji coba	cobaisjs	test@oke.m	uji	2021-11-18 14:31:17.91324	\N	\N	\N	0854646	\N	\N
 3	udin	12345	udin@test.net	Udin	2021-11-17 04:07:01.210256	\N	\N	eZZucGfqRnOq42AqyKp4ej:APA91bF8OM024r5K2sII842K8epIRQUvFpKoZ-PUpYtFUp70_h3HcU6wSOaiOAWJGFjcGBqdfnP4paBPBTShpONgOniD4by59nMezJGiEX6sO57Aq3KieRoMkMFppLtUzcm_Dwfgaw7k	02584644	\N	\N
-23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	eZZucGfqRnOq42AqyKp4ej:APA91bF8OM024r5K2sII842K8epIRQUvFpKoZ-PUpYtFUp70_h3HcU6wSOaiOAWJGFjcGBqdfnP4paBPBTShpONgOniD4by59nMezJGiEX6sO57Aq3KieRoMkMFppLtUzcm_Dwfgaw7k	31213	\N	\N
 22	uko	12345	test@test.m	Amir	2021-11-19 14:22:12.626541	\N	\N	\N	055847	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-27 13:32:46.476	\N	eZZucGfqRnOq42AqyKp4ej:APA91bF8OM024r5K2sII842K8epIRQUvFpKoZ-PUpYtFUp70_h3HcU6wSOaiOAWJGFjcGBqdfnP4paBPBTShpONgOniD4by59nMezJGiEX6sO57Aq3KieRoMkMFppLtUzcm_Dwfgaw7k	\N	Admin	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-28 15:22:07.027	\N	cRB_xE8gRFissqIbnUTHF_:APA91bFSEAuwHNL52xI3wHpLPrYEOUZHMuMbOMSIa0cLmc0yTOXFBK4VAZBrwhk4qmQJ89ltRJvnOya36ChdfY4wSU4ogUPx4m4oRfDeULhRsiZWq22ekXSZrWpdM9mVjshzNp27BMI9	\N	Admin	\N
+23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	ceIiyqrqRemgjVHm5TwYe4:APA91bHy6wGQMOegk1NmnQW2L5ZS02OhQ3_XHgmdqRpbTidlMnzCXjBE6CK7UTcOO7XKcf22MlXZK69t_rtHR6TNk7LZsZC00QFYE5zyhkWNc2vBIsyM4xcIbzGz68JkUSrydICWKCdr	31213	\N	\N
 30	text\n	text	text\n	text\n	2021-11-23 15:02:11.265382	\N	\N	\N	1234	\N	\N
 \.
 
@@ -672,12 +672,11 @@ COPY public.materi_assign (id, materi_id, account_id, create_date) FROM stdin;
 --
 
 COPY public.poin_exam (id, exam_id, user_id, transaction_number, score, create_date, status) FROM stdin;
-57	3	23	kwh24v03	0	2021-11-27 00:10:27.699338	0
-59	2	23	kwh3bjls	0	2021-11-27 00:43:39.136543	0
-60	5	23	kwhsmvdr	0	2021-11-27 12:32:18.015267	0
-58	4	23	kwh3b87k	27	2021-11-27 00:43:24.368738	1
-61	3	3	kwhto7uf	0	2021-11-27 13:01:20.439419	0
-56	2	3	kwh20j1i	100	2021-11-27 00:07:05.574448	1
+86	5	1	20cd26e6-7aa6-4f14-9eb5-3702c91d2966	0	2021-11-28 16:42:41.945129	0
+87	2	1	356ce789-f923-435e-bc87-547397ae569a	0	2021-11-29 00:04:10.716561	0
+88	2	1	401d0cdc-ee72-4c36-8ae3-8329c41f2cd9	0	2021-11-29 00:12:10.799981	0
+89	2	1	10ab311d-7ffa-465b-8f04-938461e2df65	0	2021-11-29 00:19:13.042987	0
+90	2	1	86a28ca9-01f4-4fe1-8b0c-0287d764f249	0	2021-11-29 00:22:55.641532	0
 \.
 
 
@@ -686,68 +685,23 @@ COPY public.poin_exam (id, exam_id, user_id, transaction_number, score, create_d
 --
 
 COPY public.poin_exam_detail (id, poin_exam_id, answer, istrue, created_date, answer_id) FROM stdin;
-148	56	2	t	2021-11-27 00:07:05.577777	9
-149	56	3	t	2021-11-27 00:07:07.023406	10
-150	56	3	t	2021-11-27 00:07:08.922364	11
-151	56	2	t	2021-11-27 00:07:12.852927	12
-152	56	4	t	2021-11-27 00:07:13.840729	13
-153	56	2	f	2021-11-27 00:07:14.817782	14
-154	56	3	f	2021-11-27 00:07:15.802131	15
-155	56	4	f	2021-11-27 00:07:16.986374	16
-156	56	1	f	2021-11-27 00:07:20.377394	17
-157	56	3	f	2021-11-27 00:07:22.616153	18
-158	56	4	f	2021-11-27 00:07:24.472777	19
-159	57	2	t	2021-11-27 00:10:27.701753	20
-160	57	3	f	2021-11-27 00:10:29.389844	21
-161	57	2	f	2021-11-27 00:10:32.760845	22
-162	57	3	t	2021-11-27 00:10:34.317384	23
-163	57	2	f	2021-11-27 00:10:36.089162	24
-164	57	4	f	2021-11-27 00:10:38.183458	25
-165	57	2	f	2021-11-27 00:10:40.093512	26
-166	57	3	t	2021-11-27 00:10:41.945403	27
-167	57	2	f	2021-11-27 00:10:43.493376	28
-168	57	3	f	2021-11-27 00:10:46.838347	29
-169	57	4	f	2021-11-27 00:10:49.180324	30
-170	58	1	t	2021-11-27 00:43:24.375125	31
-171	58	2	f	2021-11-27 00:43:28.917029	32
-172	59	2	t	2021-11-27 00:43:39.138248	9
-173	59	1	f	2021-11-27 00:43:43.62886	10
-174	59	2	f	2021-11-27 00:43:45.277424	11
-175	59	1	f	2021-11-27 00:43:47.921373	12
-176	59	1	f	2021-11-27 00:43:49.788817	13
-177	59	2	f	2021-11-27 00:43:51.986634	14
-178	59	1	f	2021-11-27 00:43:53.329998	15
-179	59	3	f	2021-11-27 00:43:55.200243	16
-180	59	1	f	2021-11-27 00:43:57.672481	17
-181	59	2	f	2021-11-27 00:44:00.017238	18
-182	59	2	t	2021-11-27 00:44:02.732656	19
-183	60	1	t	2021-11-27 12:32:18.020198	42
-184	60	2	t	2021-11-27 12:32:20.21727	43
-185	60	3	t	2021-11-27 12:32:21.480886	44
-186	60	1	f	2021-11-27 12:32:22.754906	45
-187	60	2	f	2021-11-27 12:32:24.020703	46
-188	60	1	f	2021-11-27 12:32:25.86795	47
-189	60	4	f	2021-11-27 12:32:28.377962	48
-190	60	5	f	2021-11-27 12:32:30.391532	49
-191	60	1	f	2021-11-27 12:32:31.993714	50
-192	60	2	f	2021-11-27 12:32:34.063222	51
-193	60	4	f	2021-11-27 12:32:35.871634	52
-194	56	1	f	2021-11-27 12:52:02.589786	9
-195	56	2	f	2021-11-27 12:52:09.502642	10
-196	56	1	f	2021-11-27 12:52:11.517239	11
-197	61	2	t	2021-11-27 13:01:20.44269	20
-198	61	1	t	2021-11-27 13:01:22.551084	21
-199	61	5	t	2021-11-27 13:01:28.161856	22
-200	61	3	t	2021-11-27 13:01:32.58492	23
-201	61	4	t	2021-11-27 13:01:35.779548	24
-202	61	3	t	2021-11-27 13:01:38.593357	25
-203	61	1	t	2021-11-27 13:01:44.016689	26
-204	61	3	t	2021-11-27 13:01:49.600777	27
-205	61	4	t	2021-11-27 13:01:55.773489	28
-206	61	2	t	2021-11-27 13:02:03.190892	29
-207	61	2	t	2021-11-27 13:02:07.323088	30
-208	57	1	f	2021-11-28 00:47:52.699726	20
-209	57	3	f	2021-11-28 00:47:59.053822	21
+378	86	3	f	2021-11-28 16:43:31.21094	42
+379	86	1	f	2021-11-28 16:43:32.631913	43
+380	86	3	t	2021-11-28 16:43:33.965174	44
+381	87	1	f	2021-11-29 00:04:10.720308	9
+382	87	2	f	2021-11-29 00:04:17.245966	10
+383	87	3	f	2021-11-29 00:04:26.976678	9
+384	87	2	f	2021-11-29 00:04:30.800843	10
+385	88	2	t	2021-11-29 00:12:10.802514	9
+386	88	3	t	2021-11-29 00:12:14.654587	10
+387	88	3	f	2021-11-29 00:12:26.407854	9
+388	88	2	f	2021-11-29 00:12:33.616683	10
+389	89	3	f	2021-11-29 00:19:13.046142	9
+390	89	1	f	2021-11-29 00:19:15.461937	10
+391	90	3	f	2021-11-29 00:22:55.644507	9
+392	90	4	f	2021-11-29 00:22:58.076838	10
+376	86	1	t	2021-11-28 16:42:41.948171	42
+377	86	2	t	2021-11-28 16:42:43.156458	43
 \.
 
 
@@ -851,6 +805,119 @@ COPY public.usage_history (id, user_id, type, description, create_date) FROM std
 41	1	OPEN_KOMPENTENSI	Ketika membuka kompentensi	2021-11-28 01:10:24.065383
 42	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 01:13:05.413391
 43	1	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 01:16:56.069757
+44	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 02:28:10.504333
+45	1	OPEN_KOMPENTENSI	Ketika membuka kompentensi	2021-11-28 02:28:21.229887
+46	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 02:28:24.738379
+47	1	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 02:29:26.691424
+48	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 09:08:53.846499
+49	23	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 09:08:57.376466
+50	23	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 09:09:10.316281
+51	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 09:09:34.078157
+52	23	OPEN_KOMPENTENSI	Ketika membuka kompentensi	2021-11-28 09:09:38.406222
+53	23	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 09:09:42.66682
+54	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 10:40:01.549455
+55	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 10:53:09.210003
+56	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 10:53:17.84275
+57	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 10:56:01.973366
+58	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 10:56:18.879111
+59	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 10:56:25.097152
+60	1	OPEN_KOMPENTENSI	Ketika membuka kompentensi	2021-11-28 10:56:31.121626
+61	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 10:57:00.630426
+62	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 11:45:23.009597
+63	1	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 11:45:39.979506
+64	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 11:45:57.955679
+65	1	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 11:46:15.11637
+66	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 11:46:21.303705
+67	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 11:48:37.385174
+68	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 11:54:21.295758
+69	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 12:00:33.553064
+70	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 12:15:54.390317
+71	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 12:42:42.205231
+72	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 13:16:49.079793
+73	23	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 13:16:55.976473
+74	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 13:52:26.149292
+75	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 13:52:31.278416
+76	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-28 13:52:36.924226
+77	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 13:52:42.601226
+78	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 14:10:40.028372
+79	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 14:11:41.982389
+80	1	OPEN_EXAM	Ketika membuka menu ujian, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 14:11:44.324988
+81	1	OPEN_EXAM	Ketika membuka menu ujian, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 14:12:25.285503
+82	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 14:12:45.151498
+83	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 14:12:46.827596
+84	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 14:13:04.607906
+85	1	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 14:13:06.0179
+86	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 14:35:22.457439
+87	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 14:35:23.859144
+88	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 14:37:44.020057
+89	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 14:45:03.712792
+90	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 14:45:04.983638
+91	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 14:46:24.047873
+92	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 14:46:25.342656
+93	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 14:56:14.205049
+94	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 14:56:15.129599
+95	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 14:56:35.498911
+96	1	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 14:56:36.59966
+97	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 15:01:06.346269
+98	1	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 15:01:06.944603
+99	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 15:09:31.036188
+100	1	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 15:09:32.281514
+101	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 15:12:37.224971
+102	1	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 15:12:39.381252
+103	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 15:15:28.785917
+104	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 15:15:41.020942
+105	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-28 15:15:50.863284
+106	1	OPEN_EXAM	Ketika membuka menu ujian, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-28 15:15:52.053951
+107	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 15:18:14.449763
+108	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 15:23:38.195579
+109	1	OPEN_EXAM	Ketika membuka menu ujian, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 15:23:41.908602
+110	1	OPEN_EXAM	Ketika membuka menu ujian, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 15:25:34.016471
+111	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 15:42:50.036691
+112	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 15:42:54.872826
+113	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-28 15:42:57.412939
+114	23	OPEN_KOMPENTENSI	Ketika membuka kompentensi	2021-11-28 15:42:59.059999
+115	23	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 15:43:01.051356
+116	23	PLAY_VIDEO	Ketika memulai memutar video	2021-11-28 15:43:12.52349
+117	23	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 15:43:16.228999
+118	23	OPEN_EXAM	Ketika membuka menu ujian, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-28 15:43:18.404396
+119	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 15:43:38.54264
+120	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 15:44:07.196954
+121	23	OPEN_KOMPENTENSI	Ketika membuka kompentensi	2021-11-28 15:44:10.981294
+122	23	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-28 15:44:14.283075
+123	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-28 16:13:35.459724
+124	1	OPEN_EXAM	Ketika membuka menu ujian, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-28 16:13:36.758461
+125	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 16:14:14.165818
+126	1	OPEN_EXAM	Ketika membuka menu ujian, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-28 16:14:17.685163
+127	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 16:15:42.469821
+128	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 16:16:35.450837
+129	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 16:16:37.377867
+130	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 16:22:23.830882
+131	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 16:22:26.920561
+132	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 16:22:53.338238
+133	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 16:27:23.137637
+134	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 16:28:51.403779
+135	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 16:28:52.615903
+136	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 16:29:34.811562
+137	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 16:29:39.933229
+138	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-28 16:31:04.265808
+139	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 16:32:13.828168
+140	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-28 16:37:14.663479
+141	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 16:40:01.840664
+142	1	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 16:40:03.30651
+143	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 16:42:37.923803
+144	1	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 16:42:39.280332
+145	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 16:46:37.071055
+146	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 16:46:43.734938
+147	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 16:46:58.599837
+148	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-28 16:47:47.631115
+149	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-28 16:48:02.204208
+150	1	OPEN_KOMPENTENSI	Ketika membuka kompentensi	2021-11-28 16:48:03.304102
+151	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-28 22:07:21.916821
+152	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-29 00:04:05.724645
+153	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-29 00:04:07.500507
+154	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-29 00:12:07.17034
+155	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-29 00:19:08.726349
+156	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-29 00:22:53.572881
 \.
 
 
@@ -858,7 +925,7 @@ COPY public.usage_history (id, user_id, type, description, create_date) FROM std
 -- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.accounts_id_seq', 32, true);
+SELECT pg_catalog.setval('public.accounts_id_seq', 33, true);
 
 
 --
@@ -907,14 +974,14 @@ SELECT pg_catalog.setval('public.materi_id_seq', 5, true);
 -- Name: poin_exam_detail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 209, true);
+SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 392, true);
 
 
 --
 -- Name: poin_exam_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_id_seq', 61, true);
+SELECT pg_catalog.setval('public.poin_exam_id_seq', 90, true);
 
 
 --
@@ -928,7 +995,7 @@ SELECT pg_catalog.setval('public.question_id_seq', 60, true);
 -- Name: usage_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.usage_history_id_seq', 43, true);
+SELECT pg_catalog.setval('public.usage_history_id_seq', 156, true);
 
 
 --
