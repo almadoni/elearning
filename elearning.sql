@@ -524,12 +524,11 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 5	amir	12345	amir@test.mn	amir oke	2021-11-17 16:44:57.39173	\N	\N	\N	958425	\N	\N
 11	Ajo rajo	12345	aji@test.m	ajo singa	2021-11-18 13:09:55.477377	\N	\N	\N	08526669	\N	\N
 12	mesi	12345	test.m	mesi	2021-11-18 13:12:56.47992	\N	\N	\N	12345	\N	\N
-13	uji coba	cobaisjs	test@oke.m	uji	2021-11-18 14:31:17.91324	\N	\N	\N	0854646	\N	\N
 3	udin	12345	udin@test.net	Udin	2021-11-17 04:07:01.210256	\N	\N	eZZucGfqRnOq42AqyKp4ej:APA91bF8OM024r5K2sII842K8epIRQUvFpKoZ-PUpYtFUp70_h3HcU6wSOaiOAWJGFjcGBqdfnP4paBPBTShpONgOniD4by59nMezJGiEX6sO57Aq3KieRoMkMFppLtUzcm_Dwfgaw7k	02584644	\N	\N
 22	uko	12345	test@test.m	Amir	2021-11-19 14:22:12.626541	\N	\N	\N	055847	\N	\N
-23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	ceIiyqrqRemgjVHm5TwYe4:APA91bHy6wGQMOegk1NmnQW2L5ZS02OhQ3_XHgmdqRpbTidlMnzCXjBE6CK7UTcOO7XKcf22MlXZK69t_rtHR6TNk7LZsZC00QFYE5zyhkWNc2vBIsyM4xcIbzGz68JkUSrydICWKCdr	31213	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-29 02:14:32.677	\N	eQ8W9nvyS9GMgdS9uSojkJ:APA91bGSLwwoF4xONrgOr4Obk5_hL4qoxwZyvzCt_Xp9ddCHC_oHEHeST758XxoIgCouiXApvWITRiMDLt89fCuA7WBjtod0n7QVvPVlMIhDqsP9si5GAhznm37g83b6XNxAcPOyId4Q	\N	Admin	\N
-30	text\n	text	text\n	text\n	2021-11-23 15:02:11.265382	\N	\N	\N	1234	\N	\N
+38	ujiooyuj	244hrjdhhhhh	teyust@ok.m	apoeokiu	2021-11-29 23:22:12.261691	\N	\N	\N	085546	\N	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-29 16:32:06.282	\N	eQ8W9nvyS9GMgdS9uSojkJ:APA91bGSLwwoF4xONrgOr4Obk5_hL4qoxwZyvzCt_Xp9ddCHC_oHEHeST758XxoIgCouiXApvWITRiMDLt89fCuA7WBjtod0n7QVvPVlMIhDqsP9si5GAhznm37g83b6XNxAcPOyId4Q	\N	Admin	\N
+23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	ceIiyqrqRemgjVHm5TwYe4:APA91bHy6wGQMOegk1NmnQW2L5ZS02OhQ3_XHgmdqRpbTidlMnzCXjBE6CK7UTcOO7XKcf22MlXZK69t_rtHR6TNk7LZsZC00QFYE5zyhkWNc2vBIsyM4xcIbzGz68JkUSrydICWKCdr	31213	Admin	\N
 \.
 
 
@@ -664,6 +663,9 @@ COPY public.materi_assign (id, materi_id, account_id, create_date) FROM stdin;
 8	2	1	2021-11-28 01:07:28.650662
 9	3	1	2021-11-28 01:07:31.92488
 10	4	1	2021-11-28 01:07:36.000536
+14	4	3	2021-11-29 22:46:38.144383
+16	2	2	2021-11-29 22:48:15.348566
+17	1	38	2021-11-29 23:22:12.268507
 \.
 
 
@@ -962,6 +964,13 @@ COPY public.usage_history (id, user_id, type, description, create_date) FROM std
 162	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 00:44:04.722709
 163	23	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 00:44:06.913049
 164	23	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-29 00:44:33.443516
+165	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-29 09:23:24.044864
+166	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Kegiatan Ekonomi, Uang dan Koperasi	2021-11-29 09:23:26.768701
+167	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-29 09:23:28.745264
+168	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 09:23:30.644235
+169	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-29 19:05:48.449072
+170	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-29 19:05:51.370392
+171	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 22:28:07.77197
 \.
 
 
@@ -969,7 +978,7 @@ COPY public.usage_history (id, user_id, type, description, create_date) FROM std
 -- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.accounts_id_seq', 34, true);
+SELECT pg_catalog.setval('public.accounts_id_seq', 38, true);
 
 
 --
@@ -1004,7 +1013,7 @@ SELECT pg_catalog.setval('public.exam_id_seq', 5, true);
 -- Name: materi_assign_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.materi_assign_id_seq', 10, true);
+SELECT pg_catalog.setval('public.materi_assign_id_seq', 17, true);
 
 
 --
@@ -1039,7 +1048,7 @@ SELECT pg_catalog.setval('public.question_id_seq', 60, true);
 -- Name: usage_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.usage_history_id_seq', 164, true);
+SELECT pg_catalog.setval('public.usage_history_id_seq', 171, true);
 
 
 --

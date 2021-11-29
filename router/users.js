@@ -19,8 +19,6 @@ router.get('/list_user', (req, res) =>{
 	  });
 
         });
-
-
 });
 
 
@@ -49,6 +47,7 @@ const createUser = (req, res) =>{
 }
 
 const register = (req, res) =>{
+	/*
 	console.log(req.body);
         const {username, password, fullname, email, nomahasiswa} = req.body;
         pool.query("INSERT INTO accounts (username, password, fullname, email, mahasiswa_id) values ($1, $2, $3, $4, $5)",
@@ -59,6 +58,26 @@ const register = (req, res) =>{
                 }
                 res.status(200).json({code: "9200", result: "OK"});
         })
+	*/
+	(async ()=> {
+		console.log(reg.body);
+		const {username, password, fullname, email, nomahasiswa} = req.body;
+		const doRegister = await saveRegister(username, password, fullname, email, nomahasiswa);
+		var id = doRegister.rows[0].id;
+		console.log("id input accounts "+id);
+		const saveMateri = await saveMateri(1, id);
+		res.status(200).json({code: "9200", result: "OK"});
+	})();
+}
+
+async function saveRegister(username, password, fullname, email, nomahasiswa){
+	const sql = "INSERT INTO accounts (username, password, fullname, email, mahasiswa_id) values ($1, $2, $3, $4, $5) returning id";
+	return pool.query(sql, [username, password, fullname, email, nomahasiswa]);
+}
+
+async function saveMateri(materiId, accountId){
+	const sql = "insert into materi_assign (materi_id, account_id) values ($1, $2)";
+	return pool.query(sql, [materiId, accountId]);
 }
 
 

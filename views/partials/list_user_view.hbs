@@ -27,10 +27,9 @@
 	          <th>NO Mahasiswa</th>
 	          <th>Email</th>
 	          <th>Username</th>  
-	          <th>Password</th>          
-	          {{#if is_admin}}
-	            <th>Action</th>
-	          {{/if}}   
+	          <th>Password</th>    
+                  <th>Aktifitas</th>      	          
+	          <th>Materi Yang Dimiliki</th>  
 	          
 	        </tr>
 	      </thead>
@@ -43,13 +42,8 @@
 	          <td>{{email}}</td>
 	          <td>{{username}}</td>  
 	          <td>{{password}}</td>
-	          {{#if is_admin}}
-	          <td>  
-	            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{id}}" 
-	            data-name="{{name}}" data-code="{{code}}" data-parent_id="{{parent_id}}">Edit</a>
-	            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{id}}" data-name="{{name}}" >Delete</a> 
-	          </td>
-	          {{/if}}
+                  <td><a href="/list_usage_user/{{id}}">detail</a></td>
+	          <td><a href="/list_materi_assign/{{id}}/{{fullname}}" >Lihat</a> </td>
 	        </tr>
 	        {{/each}}
 	      </tbody>

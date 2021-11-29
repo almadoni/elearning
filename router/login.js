@@ -22,13 +22,21 @@ router.post('/login/auth', (reg, res) =>{
   console.log('start user auth ....')
   const {username, password} = reg.body;
 
-  const sql = "select * from accounts where (username=$1 or email=$1) and password=$2";
+  const sql = "select * from accounts where (username=$1 or email=$1) and password=$2 and status = 'Admin'";
   
   console.log("username : "+username);
   console.log("password : "+password);
   
   const query = pool.query(sql, [username, password], (err, results) => {
-    if(err) throw err;
+    if(err) {
+
+	res.render('login', {
+        layout: 'login',
+        message: err
+      });
+	throw err
+    }
+	  
     console.log(results.rows);
 
     console.log("length is : "+results.rows.length);

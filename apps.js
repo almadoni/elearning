@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const login = require('./router/login');
 const users = require('./router/users');
 const materi_ui = require('./router/materi_ui');
+const materi_assign_ui = require('./router/materi_assign_ui');
+
 const discussion_ui = require('./router/discussion_ui');
 const commentar_ui = require('./router/commentar_ui');
 const exam_ui = require('./router/exam_ui');
@@ -82,6 +84,7 @@ app.use('/', report);
 app.use('/', login);
 app.use('/', users);
 app.use('/', materi_ui);
+app.use('/', materi_assign_ui);
 app.use('/', discussion_ui);
 app.use('/', commentar_ui);
 app.use('/', exam_ui);
