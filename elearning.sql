@@ -527,8 +527,8 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 13	uji coba	cobaisjs	test@oke.m	uji	2021-11-18 14:31:17.91324	\N	\N	\N	0854646	\N	\N
 3	udin	12345	udin@test.net	Udin	2021-11-17 04:07:01.210256	\N	\N	eZZucGfqRnOq42AqyKp4ej:APA91bF8OM024r5K2sII842K8epIRQUvFpKoZ-PUpYtFUp70_h3HcU6wSOaiOAWJGFjcGBqdfnP4paBPBTShpONgOniD4by59nMezJGiEX6sO57Aq3KieRoMkMFppLtUzcm_Dwfgaw7k	02584644	\N	\N
 22	uko	12345	test@test.m	Amir	2021-11-19 14:22:12.626541	\N	\N	\N	055847	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-28 15:22:07.027	\N	cRB_xE8gRFissqIbnUTHF_:APA91bFSEAuwHNL52xI3wHpLPrYEOUZHMuMbOMSIa0cLmc0yTOXFBK4VAZBrwhk4qmQJ89ltRJvnOya36ChdfY4wSU4ogUPx4m4oRfDeULhRsiZWq22ekXSZrWpdM9mVjshzNp27BMI9	\N	Admin	\N
 23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	ceIiyqrqRemgjVHm5TwYe4:APA91bHy6wGQMOegk1NmnQW2L5ZS02OhQ3_XHgmdqRpbTidlMnzCXjBE6CK7UTcOO7XKcf22MlXZK69t_rtHR6TNk7LZsZC00QFYE5zyhkWNc2vBIsyM4xcIbzGz68JkUSrydICWKCdr	31213	\N	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-29 02:14:32.677	\N	eQ8W9nvyS9GMgdS9uSojkJ:APA91bGSLwwoF4xONrgOr4Obk5_hL4qoxwZyvzCt_Xp9ddCHC_oHEHeST758XxoIgCouiXApvWITRiMDLt89fCuA7WBjtod0n7QVvPVlMIhDqsP9si5GAhznm37g83b6XNxAcPOyId4Q	\N	Admin	\N
 30	text\n	text	text\n	text\n	2021-11-23 15:02:11.265382	\N	\N	\N	1234	\N	\N
 \.
 
@@ -677,6 +677,9 @@ COPY public.poin_exam (id, exam_id, user_id, transaction_number, score, create_d
 88	2	1	401d0cdc-ee72-4c36-8ae3-8329c41f2cd9	0	2021-11-29 00:12:10.799981	0
 89	2	1	10ab311d-7ffa-465b-8f04-938461e2df65	0	2021-11-29 00:19:13.042987	0
 90	2	1	86a28ca9-01f4-4fe1-8b0c-0287d764f249	0	2021-11-29 00:22:55.641532	0
+91	5	1	69b79c6e-afc8-47f2-a8ad-a9b9a9ff29fc	9	2021-11-29 00:37:45.487746	1
+92	5	1	fbbcf6a4-9dca-4e69-9676-773e95cb3126	27	2021-11-29 00:38:15.043694	1
+93	5	23	aa811c11-aa32-4b6d-9c17-71c53b8c4bf5	18	2021-11-29 00:44:10.636352	1
 \.
 
 
@@ -700,8 +703,41 @@ COPY public.poin_exam_detail (id, poin_exam_id, answer, istrue, created_date, an
 390	89	1	f	2021-11-29 00:19:15.461937	10
 391	90	3	f	2021-11-29 00:22:55.644507	9
 392	90	4	f	2021-11-29 00:22:58.076838	10
+393	91	2	f	2021-11-29 00:37:45.491542	42
+394	91	4	f	2021-11-29 00:37:47.115349	43
+395	91	2	f	2021-11-29 00:37:48.768466	44
+396	91	3	f	2021-11-29 00:37:51.83989	45
+397	91	4	f	2021-11-29 00:37:53.226599	46
+398	91	3	f	2021-11-29 00:37:56.040389	47
+399	91	2	f	2021-11-29 00:37:57.542515	48
+400	91	1	f	2021-11-29 00:37:59.099327	49
+401	91	2	t	2021-11-29 00:38:01.070585	50
+402	91	3	f	2021-11-29 00:38:03.095597	51
+403	91	4	f	2021-11-29 00:38:06.770921	52
+404	92	3	f	2021-11-29 00:38:15.046033	42
+405	92	3	f	2021-11-29 00:38:16.395804	43
+406	92	3	t	2021-11-29 00:38:17.804207	44
+407	92	3	f	2021-11-29 00:38:19.122718	45
+408	92	3	f	2021-11-29 00:38:20.417786	46
 376	86	1	t	2021-11-28 16:42:41.948171	42
 377	86	2	t	2021-11-28 16:42:43.156458	43
+409	92	3	f	2021-11-29 00:38:21.879735	47
+410	92	3	t	2021-11-29 00:38:24.085632	48
+411	92	3	t	2021-11-29 00:38:25.614469	49
+412	92	3	f	2021-11-29 00:38:27.144081	50
+413	92	3	f	2021-11-29 00:38:28.704303	51
+414	92	3	f	2021-11-29 00:38:30.141451	52
+415	93	5	f	2021-11-29 00:44:10.638367	42
+416	93	5	f	2021-11-29 00:44:11.932579	43
+417	93	4	f	2021-11-29 00:44:12.637292	44
+418	93	5	f	2021-11-29 00:44:14.059844	45
+419	93	5	f	2021-11-29 00:44:14.891301	46
+420	93	4	t	2021-11-29 00:44:15.77114	47
+421	93	3	t	2021-11-29 00:44:17.037212	48
+422	93	5	f	2021-11-29 00:44:17.925941	49
+423	93	3	f	2021-11-29 00:44:18.937396	50
+424	93	3	f	2021-11-29 00:44:19.992184	51
+425	93	5	f	2021-11-29 00:44:22.12021	52
 \.
 
 
@@ -918,6 +954,14 @@ COPY public.usage_history (id, user_id, type, description, create_date) FROM std
 154	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-29 00:12:07.17034
 155	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-29 00:19:08.726349
 156	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-29 00:22:53.572881
+157	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 00:37:39.83771
+158	1	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 00:37:41.434028
+159	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-29 00:38:10.479921
+160	1	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 00:38:12.07495
+161	1	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-29 00:38:33.19835
+162	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 00:44:04.722709
+163	23	OPEN_EXAM	Ketika membuka menu ujian, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 00:44:06.913049
+164	23	FINISH_EXAM	Ketika menekan tombol selesai ujian	2021-11-29 00:44:33.443516
 \.
 
 
@@ -925,7 +969,7 @@ COPY public.usage_history (id, user_id, type, description, create_date) FROM std
 -- Name: accounts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.accounts_id_seq', 33, true);
+SELECT pg_catalog.setval('public.accounts_id_seq', 34, true);
 
 
 --
@@ -974,14 +1018,14 @@ SELECT pg_catalog.setval('public.materi_id_seq', 5, true);
 -- Name: poin_exam_detail_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 392, true);
+SELECT pg_catalog.setval('public.poin_exam_detail_id_seq', 425, true);
 
 
 --
 -- Name: poin_exam_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.poin_exam_id_seq', 90, true);
+SELECT pg_catalog.setval('public.poin_exam_id_seq', 93, true);
 
 
 --
@@ -995,7 +1039,7 @@ SELECT pg_catalog.setval('public.question_id_seq', 60, true);
 -- Name: usage_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.usage_history_id_seq', 156, true);
+SELECT pg_catalog.setval('public.usage_history_id_seq', 164, true);
 
 
 --
