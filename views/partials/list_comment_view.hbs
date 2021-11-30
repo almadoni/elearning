@@ -26,6 +26,7 @@
 	          <th>Materi</th>
 	          <th>Komentar</th>
 	          <th>Komentar By</th>
+                  <th>Posted by</th>
 	          <th>Tanggal Pembuatan</th>  
 	          {{#if is_admin}}
 	            <th>Action</th>
@@ -37,10 +38,11 @@
 	         {{#each data}}          
 	        <tr>
 	          <td>{{id}}</td>    
-	          <td>{{discussion_id}}</td>  
-	          <td>{{commentar}}</td>  
-	          <td>{{user_id}}</td>  
-	          <td>{{create_date}}</td>
+	          <td>{{materi_name}}</td>  
+	          <td>{{comment}}</td>  
+	          <td>{{comment_by}}</td>
+                  <td>{{fullname}} ({{email}})</td>  
+	          <td>{{created_date}}</td>
 	          {{#if is_admin}}
 	          <td>  
 	            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{id}}" 
