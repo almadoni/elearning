@@ -524,10 +524,10 @@ COPY public.accounts (id, username, password, email, fullname, created_on, last_
 5	amir	12345	amir@test.mn	amir oke	2021-11-17 16:44:57.39173	\N	\N	\N	958425	\N	\N
 11	Ajo rajo	12345	aji@test.m	ajo singa	2021-11-18 13:09:55.477377	\N	\N	\N	08526669	\N	\N
 12	mesi	12345	test.m	mesi	2021-11-18 13:12:56.47992	\N	\N	\N	12345	\N	\N
+1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-30 22:41:10.02	\N	cBJ29U_ZQGyqt9m1IzbljQ:APA91bGjnXTke3-Zmv3zveRHaT7IP5ziwAmSarkgqlvz-uPvVP8VuTpdfPi6L_F6T0yUi5d4ktn3CHjQa4Pa09sd34Jiuh2iRnHv-GDk7Q00MVzCtO9I-agYag1KwThJ1KBLZ75e6FJ6	\N	Admin	\N
 3	udin	12345	udin@test.net	Udin	2021-11-17 04:07:01.210256	\N	\N	eZZucGfqRnOq42AqyKp4ej:APA91bF8OM024r5K2sII842K8epIRQUvFpKoZ-PUpYtFUp70_h3HcU6wSOaiOAWJGFjcGBqdfnP4paBPBTShpONgOniD4by59nMezJGiEX6sO57Aq3KieRoMkMFppLtUzcm_Dwfgaw7k	02584644	\N	\N
 22	uko	12345	test@test.m	Amir	2021-11-19 14:22:12.626541	\N	\N	\N	055847	\N	\N
 38	ujiooyuj	244hrjdhhhhh	teyust@ok.m	apoeokiu	2021-11-29 23:22:12.261691	\N	\N	\N	085546	\N	\N
-1	almadoni	doni	almadoni@gmail.com	Almadoni	2021-11-16 06:46:14.95572	2021-11-29 16:32:06.282	\N	eQ8W9nvyS9GMgdS9uSojkJ:APA91bGSLwwoF4xONrgOr4Obk5_hL4qoxwZyvzCt_Xp9ddCHC_oHEHeST758XxoIgCouiXApvWITRiMDLt89fCuA7WBjtod0n7QVvPVlMIhDqsP9si5GAhznm37g83b6XNxAcPOyId4Q	\N	Admin	\N
 23	ilham	coba20	ilhamtp2008@gmail.com	ihshwj	2021-11-19 14:40:30.123674	2021-11-24 14:30:03.709	\N	ceIiyqrqRemgjVHm5TwYe4:APA91bHy6wGQMOegk1NmnQW2L5ZS02OhQ3_XHgmdqRpbTidlMnzCXjBE6CK7UTcOO7XKcf22MlXZK69t_rtHR6TNk7LZsZC00QFYE5zyhkWNc2vBIsyM4xcIbzGz68JkUSrydICWKCdr	31213	Admin	\N
 \.
 
@@ -661,11 +661,10 @@ COPY public.materi_assign (id, materi_id, account_id, create_date) FROM stdin;
 6	4	23	2021-11-19 14:44:30.515992
 7	1	1	2021-11-28 01:07:24.512209
 8	2	1	2021-11-28 01:07:28.650662
-9	3	1	2021-11-28 01:07:31.92488
-10	4	1	2021-11-28 01:07:36.000536
 14	4	3	2021-11-29 22:46:38.144383
 16	2	2	2021-11-29 22:48:15.348566
 17	1	38	2021-11-29 23:22:12.268507
+18	4	1	2021-12-01 05:49:05.898866
 \.
 
 
@@ -971,6 +970,17 @@ COPY public.usage_history (id, user_id, type, description, create_date) FROM std
 169	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-29 19:05:48.449072
 170	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-29 19:05:51.370392
 171	23	OPEN_SUB_MATERI	Ketika membuka sub menu, Interaksi dalam Perkembangan IPTEK dan Masyarakat Global	2021-11-29 22:28:07.77197
+172	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-29 23:39:38.212271
+173	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Pasar, Kesejahtraan dan Perdagangan Internasional	2021-11-30 04:54:49.991473
+174	1	OPEN_SUB_MATERI	Ketika membuka sub menu, Politik dan Pemerintahan di Indonesia	2021-11-30 21:41:43.93776
+175	1	OPEN_PEMBAHASAN	Ketika membuka pembahasan	2021-11-30 21:41:47.344674
+176	1	OPEN_EXAM	Ketika membuka menu ujian, Politik dan Pemerintahan di Indonesia	2021-11-30 21:41:59.582401
+177	1	ON_LOGIN	Ketika login	2021-12-01 05:41:35.650434
+178	1	ON_LOGIN	Ketika login	2021-12-01 05:46:12.621361
+179	1	ON_LOGIN	Ketika login	2021-12-01 05:49:00.623432
+180	1	DISCUSSION	Ketika membuka menu diskusi	2021-12-01 05:49:27.180446
+181	1	ON_LOGIN	Ketika login, Model: 23, Version: 6.0.1, Version Release: SM-C5000	2021-12-01 05:56:04.258286
+182	1	ON_LOGOUT	Ketika logout	2021-12-01 05:56:42.313987
 \.
 
 
@@ -1013,7 +1023,7 @@ SELECT pg_catalog.setval('public.exam_id_seq', 5, true);
 -- Name: materi_assign_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.materi_assign_id_seq', 17, true);
+SELECT pg_catalog.setval('public.materi_assign_id_seq', 18, true);
 
 
 --
@@ -1048,7 +1058,7 @@ SELECT pg_catalog.setval('public.question_id_seq', 60, true);
 -- Name: usage_history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: almadoni
 --
 
-SELECT pg_catalog.setval('public.usage_history_id_seq', 171, true);
+SELECT pg_catalog.setval('public.usage_history_id_seq', 182, true);
 
 
 --
